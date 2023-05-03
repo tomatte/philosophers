@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 20:03:46 by dbrandao          #+#    #+#             */
-/*   Updated: 2022/07/01 21:05:52 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/03 19:32:28 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,13 @@
 
 void	ft_putendl_fd(char *s, int fd)
 {
-	if (!s)
+	int	size;
+
+	if (s == NULL)
 		return ;
-	while (*s)
-		write(fd, s++, 1);
-	write(fd, "\n", 1);
+	if (fd < 0)
+		return ;
+	size = sizeof(char) * ft_strlen(s);
+	write(fd, s, size);
+	write(fd, "\n", sizeof(char));
 }

@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 19:58:41 by dbrandao          #+#    #+#             */
-/*   Updated: 2022/07/01 21:06:03 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/03 19:31:55 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,12 @@
 
 void	ft_putstr_fd(char *s, int fd)
 {
-	if (!s)
+	int	size;
+
+	if (s == NULL)
 		return ;
-	while (*s)
-		write(fd, s++, 1);
+	if (fd < 0)
+		return ;
+	size = sizeof(char) * ft_strlen(s);
+	write(fd, s, size);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbrandao < dbrandao@student.42sp.org.br    +#+  +:+       +#+        */
+/*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 20:27:51 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/26 14:21:26 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/03 19:23:51 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,9 @@ char	*ft_itoa(int n);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 void	ft_putchar_fd(char c, int fd);
+//writes in a given fd
 void	ft_putstr_fd(char *s, int fd);
+//writes in a given fd with new line
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 t_list	*ft_lstnew(void *content);
@@ -108,7 +110,7 @@ char	*ft_strtoupper(char *str);
 
 int		ft_abs(int num);
 
-/*verify if string is a number, 
+/*verify if string is a number,
 it passes the initial spaces and stops in the first space after the number
 result examples:
 "  -99 " is a number
@@ -118,7 +120,7 @@ result examples:
 */
 char	*ft_isnumber(char *str);
 
-//verify if character is a space 
+//verify if character is a space
 int		ft_isspace(char c);
 
 //return 1 if char is - or +
