@@ -1,19 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/07 02:33:17 by dbrandao          #+#    #+#             */
-/*   Updated: 2022/12/07 02:33:19 by dbrandao         ###   ########.fr       */
+/*   Created: 2022/05/29 01:28:11 by dbrandao          #+#    #+#             */
+/*   Updated: 2023/05/03 20:31:27 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFTPRINTF_H
-# define LIBFTPRINTF_H
+#include <libft.h>
 
-# include "./libft.h"
-# include "./ft_printf/src/ft_printf.h"
+void	ft_bzero(void *s, size_t n)
+{
+	int	i;
 
-#endif
+	i = 0;
+	while (i < (int) n)
+	{
+		((char *) s)[i] = '\0';
+		i++;
+	}
+}

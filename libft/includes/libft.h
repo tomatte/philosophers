@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 20:27:51 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/03 19:23:51 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/03 20:36:11 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <stddef.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include "./get_next_line/get_next_line_bonus.h"
+# include "../get_next_line/get_next_line_bonus.h"
 
 # define INT_MAX 2147483647
 # define INT_MIN -2147483648

@@ -1,33 +1,36 @@
-DIR_SRC		=		./src
-
 SRC			=		fill.c  ft_convert.c  \
 					ft_printf.c printf_utils.c  \
 					print_hex.c  print_int.c  \
 					print_pointer.c  print_uint.c \
 					fill_zeros.c
 
-SRC_PRNT	=		$(patsubst %.c,$(DIR_SRC)/%.c,$(SRC))
-
 H_SRC	=	./src/ft_printf.h
 
-OBJS	=	${SRC_LIB:.c=.o} ${SRC_PRNT:.c=.o}
+VPATH	=	./src
+
+OBJS_DIR	=	objects
+
+OBJS	=	$(patsubst %.c,$(OBJS_DIR)/%.o, $(SRC))
 
 NAME	=	libftprintf.a
 
-FLAGS	=	-Wall -Wextra -Werror
+CFLAGS	=	-Wall -Wextra -Werror
 
-RM		=	rm -f
-
-.c.o:
-			cc ${FLAGS} -c $< -o ${<:.c=.o} -I.
-
-$(NAME):	${OBJS} ${H_SRC}
-			mv ../libft.a ./$(NAME)
-			ar -rcs $@ $^
+RM		=	rm -rf
 
 
 all: 		${NAME}
 	mv ./$(NAME) ../$(NAME)
+
+$(OBJS_DIR)/%.o:	%.c
+	$(CC) -c $< $(CFLAGS) $(INCLUDES) -o $@
+
+$(OBJS_DIR):
+	mkdir -p $@
+
+$(NAME):	$(OBJS_DIR) $(OBJS) $(H_SRC)
+			mv ../libft.a ./$(NAME)
+			ar -rcs $@ $(OBJS) $(H_SRC)
 
 bonus:		${NAME}
 	mv ./$(NAME) ../$(NAME)

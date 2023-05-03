@@ -35,9 +35,11 @@ GNL_SRC		=	get_next_line_bonus.c \
 
 ALL_SRC		=	$(SRC) $(MORE_SRC) $(GNL_SRC) $(BONUS_SRC)
 
-HEADERS		=	./libft.h
+HEADERS		=	./includes/libft.h
 
-VPATH		=	./ \
+INCLUDES	=	-I./includes
+
+VPATH		=	./src \
 				./get_next_line \
 
 OBJS_DIR	=	./objects

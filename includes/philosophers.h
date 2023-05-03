@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:23:02 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/03 19:02:36 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/03 20:35:30 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 #include <stdlib.h>
 #include <unistd.h>
-#include "../libft/libftprintf.h"
+#include "../libft/includes/libftprintf.h"
 
 void	validation(int argc, const char *argv[]);
 
