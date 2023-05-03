@@ -1,4 +1,4 @@
-SRC			=	./ft_bzero.c ft_isalnum.c ft_isalpha.c \
+SRC			=	ft_bzero.c ft_isalnum.c ft_isalpha.c \
 				ft_isdigit.c ft_isprint.c ft_memcpy.c \
 				ft_memset.c ft_strlen.c ft_isascii.c \
 				ft_memmove.c ft_strlcpy.c ft_strlcat.c \
@@ -29,43 +29,45 @@ MORE_SRC	=	ft_putchar.c ft_putstr.c \
 				ft_pow.c \
 				ft_streq.c \
 
-GNL_SRC		=	./get_next_line/get_next_line_bonus.c \
-				./get_next_line/get_next_line_utils_bonus.c \
+GNL_SRC		=	get_next_line_bonus.c \
+				get_next_line_utils_bonus.c \
 
 
-H_SRC		=	libft.h
+ALL_SRC		=	$(SRC) $(MORE_SRC) $(GNL_SRC) $(BONUS_SRC)
 
-OBJS		=	${SRC:.c=.o} ${MORE_SRC:.c=.o} ${GNL_SRC:.c=.o}
+HEADERS		=	./libft.h
 
-BONUS_OBJS	=	${BONUS_SRC:.c=.o}
+VPATH		=	./ \
+				./get_next_line \
+
+OBJS_DIR	=	./objects
+
+OBJS		=	$(patsubst %.c,$(OBJS_DIR)/%.o, $(ALL_SRC))
 
 NAME		=	libft.a
 
-FLAGS		=	-Wall -Wextra -Werror
+CFLAGS		=	-Wall -Wextra -Werror
 
-RM			=	rm -f
-
-.c.o:
-		cc ${FLAGS} -c $< -o ${<:.c=.o}
-
-$(NAME):	${OBJS} ${H_SRC}
-			ar -rcs $@ $^
+RM			=	rm -rf
 
 all: ${NAME}
 	make -C ./ft_printf bonus
 
-bonus_objs: ${OBJS} ${BONUS_OBJS} ${H_SRC}
-	ar -rcs libft.a $^
+$(OBJS_DIR)/%.o:	%.c
+	$(CC) -c $< $(CFLAGS) $(INCLUDES) -o $@
 
-bonus: bonus_objs
-	make -C ./ft_printf bonus
+$(OBJS_DIR):
+	mkdir -p $@
+
+$(NAME):	$(OBJS_DIR) $(OBJS) $(HEADERS)
+	ar -rcs $@ $(OBJS)
 
 clean:
-		${RM} ${OBJS} ${BONUS_OBJS}
+		$(RM) $(OBJS_DIR)
 		make -C ./ft_printf clean
 
 fclean:	clean
-		${RM} ${NAME}
+		$(RM) $(NAME)
 		make -C ./ft_printf fclean
 
 re:		fclean all

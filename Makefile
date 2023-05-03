@@ -35,7 +35,7 @@ $(NAME):	$(OBJS_DIR) $(OBJS) $(LIBFT) $(HEADERS)
 	$(CC) $(OBJS) $(LIBFT) $(CFLAGS) $(INCLUDES) -lreadline -o $@
 
 $(LIBFT):
-	make -C $(LIBFT_DIR) bonus
+	make -C $(LIBFT_DIR) all
 
 clean:
 	$(RM) $(OBJS_DIR)
