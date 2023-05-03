@@ -36,7 +36,7 @@ bonus:		${NAME}
 	mv ./$(NAME) ../$(NAME)
 
 clean:
-			${RM} ${OBJS}
+			${RM} ${OBJS_DIR}
 
 fclean:		clean
 			${RM} ../${NAME}
