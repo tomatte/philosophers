@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:23:02 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/04 17:11:40 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/04 18:11:09 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ typedef struct s_data
 
 void	validation(int argc, char *argv[]);
 void	fill_data(t_data *data, int argc, char *argv[]);
+t_clst	*create_philos(t_data *data);
 
 //circular linked list
 t_clst	*clst_new(void *content);

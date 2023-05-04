@@ -1,48 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   clst_add_back.c                                    :+:      :+:    :+:   */
+/*   create_philos.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/04 15:41:15 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/04 18:10:04 by dbrandao         ###   ########.fr       */
+/*   Created: 2023/05/04 17:55:38 by dbrandao          #+#    #+#             */
+/*   Updated: 2023/05/04 18:10:56 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philosophers.h>
 
-void	clst_add_back(t_clst **lst, t_clst *node)
+static t_clst	*new_philo(int num)
 {
-	t_clst	*aux;
+	t_clst		*node;
+	t_philo		*philo;
 
-	if (node == NULL)
-		return ;
-	if (*lst == NULL)
-	{
-		*lst = node;
-		return ;
-	}
-	aux = clst_last(*lst);
-	node->prev = aux;
-	node->next = *lst;
-	aux->next = node;
-	(*lst)->prev = node;
+	philo = ft_calloc(1, sizeof(t_philo));
+	philo->left_fork = 1;
+	philo->right_fork = 0;
+	philo->num = num;
+	node = clst_new(philo);
+	return (node);
 }
 
-/*
+t_clst	*create_philos(t_data *data)
+{
+	t_clst	*philos;
+	int		i;
 
-3 <- 1 -> 2
-1 <- 2 -> 3
-2 <- 3 -> 1
-
-4 <- 1 -> 2
-1 <- 2 -> 3
-2 <- 3 -> 4
-3 <- 4 -> 1
-
-node-prev = ex-ultimo
-node->next = primeiro
-ex-ultimo->next = node
-primeiro->prev = node
- */
+	philos = NULL;
+	i = 0;
+	while (++i <= data->philo_qty)
+		clst_add_back(&philos, new_philo(i));
+	return (philos);
+}

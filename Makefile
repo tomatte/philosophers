@@ -5,6 +5,7 @@ SRC			=	main.c \
 				clst_add_back.c \
 				clst_clear.c \
 				fill_data.c \
+				create_philos.c \
 
 
 INCLUDES	=	-I./includes
