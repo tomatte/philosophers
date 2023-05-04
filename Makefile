@@ -11,7 +11,7 @@ OBJS_DIR	=	./objects
 
 OBJS		=	$(patsubst %.c,$(OBJS_DIR)/%.o, $(SRC))
 
-CFLAGS		=	-Werror -Wall -Wextra
+CFLAGS		=	-Werror -Wall -Wextra -pthread
 
 LIBFT_DIR	=	./libft
 
