@@ -1,24 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   clst_new.c                                         :+:      :+:    :+:   */
+/*   clst_add_back.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/04 15:34:35 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/04 16:05:35 by dbrandao         ###   ########.fr       */
+/*   Created: 2023/05/04 15:41:15 by dbrandao          #+#    #+#             */
+/*   Updated: 2023/05/04 15:56:37 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philosophers.h>
 
-t_clst	*clst_new(void *content)
+void	clst_add_back(t_clst **lst, t_clst *node)
 {
-	t_clst	*node;
+	t_clst	*aux;
 
-	node = ft_calloc(1, sizeof(t_clst));
-	node->next = node;
-	node->prev = node;
-	node->content = content;
-	return (node);
+	if (*lst == NULL)
+	{
+		*lst = node;
+		return ;
+	}
+	aux = clst_last(*lst);
+	node->prev = aux;
+	node->next = *lst;
+	aux->next = node;
+	(*lst)->prev = node;
 }
+
+/*
+
+3 <- 1 -> 2
+1 <- 2 -> 3
+2 <- 3 -> 1
+
+4 <- 1 -> 2
+1 <- 2 -> 3
+2 <- 3 -> 4
+3 <- 4 -> 1
+
+node-prev = ex-ultimo
+node->next = primeiro
+ex-ultimo->next = node
+primeiro->prev = node
+ */

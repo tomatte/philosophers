@@ -1,24 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   clst_new.c                                         :+:      :+:    :+:   */
+/*   clst_last.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/04 15:34:35 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/04 16:05:35 by dbrandao         ###   ########.fr       */
+/*   Created: 2023/05/04 15:42:23 by dbrandao          #+#    #+#             */
+/*   Updated: 2023/05/04 15:52:08 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philosophers.h>
 
-t_clst	*clst_new(void *content)
+t_clst	*clst_last(t_clst *lst)
 {
-	t_clst	*node;
-
-	node = ft_calloc(1, sizeof(t_clst));
-	node->next = node;
-	node->prev = node;
-	node->content = content;
-	return (node);
+	if (lst)
+		return (lst->prev);
+	return (NULL);
 }

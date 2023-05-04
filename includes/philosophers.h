@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:23:02 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/04 15:39:21 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/04 15:45:21 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,7 @@ void	validation(int argc, char *argv[]);
 
 //circular linked list
 t_clst	*clst_new(void *content);
+t_clst	*clst_last(t_clst *lst);
+void	clst_add_back(t_clst **lst, t_clst *node);
 
 #endif

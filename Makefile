@@ -1,6 +1,8 @@
 SRC			=	main.c \
 				validation.c \
 				clst_new.c \
+				clst_last.c \
+				clst_add_back.c \
 
 
 INCLUDES	=	-I./includes
