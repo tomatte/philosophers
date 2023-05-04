@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:23:02 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/04 16:52:05 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/04 16:57:16 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,15 @@ typedef struct s_philo
 	int			num;
 	pthread_t	t;
 }	t_philo;
+
+typedef struct s_data
+{
+	int	philo_qty;
+	int	die_ms;
+	int	eat_ms;
+	int	sleep_ms;
+	int	eat_qty;
+}	t_data;
 
 void	validation(int argc, char *argv[]);
 
