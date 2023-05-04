@@ -1,11 +1,14 @@
 SRC			=	main.c \
 				validation.c \
+				clst_new.c \
+
 
 INCLUDES	=	-I./includes
 
 HEADERS		=	./includes/philosophers.h
 
 VPATH		=	./src \
+				./src/list \
 
 OBJS_DIR	=	./objects
 

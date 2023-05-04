@@ -1,34 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philosophers.h                                     :+:      :+:    :+:   */
+/*   clst_new.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/03 14:23:02 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/04 15:39:21 by dbrandao         ###   ########.fr       */
+/*   Created: 2023/05/04 15:34:35 by dbrandao          #+#    #+#             */
+/*   Updated: 2023/05/04 15:37:48 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHILOSOPHERS_H
-# define PHILOSOPHERS_H
+#include <philosophers.h>
 
-#include <stdlib.h>
-#include <unistd.h>
-#include <pthread.h>
-#include <sys/time.h>
-#include "../libft/includes/libftprintf.h"
-
-typedef struct s_clst
+t_clst	*clst_new(void *content)
 {
-	void			*content;
-	struct s_clst	*next;
-	struct s_clst	*prev;
-}	t_clst;
+	t_clst	*node;
 
-void	validation(int argc, char *argv[]);
-
-//circular linked list
-t_clst	*clst_new(void *content);
-
-#endif
+	node = ft_calloc(1, sizeof(t_clst));
+	node->next = NULL;
+	node->prev = NULL;
+	node->content = content;
+	return (node);
+}
