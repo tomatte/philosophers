@@ -4,6 +4,7 @@ SRC			=	main.c \
 				clst_last.c \
 				clst_add_back.c \
 				clst_clear.c \
+				fill_data.c \
 
 
 INCLUDES	=	-I./includes

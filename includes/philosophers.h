@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:23:02 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/04 16:57:16 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/04 17:11:40 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,11 @@ typedef struct s_data
 	int	die_ms;
 	int	eat_ms;
 	int	sleep_ms;
-	int	eat_qty;
+	int	eat_times;
 }	t_data;
 
 void	validation(int argc, char *argv[]);
+void	fill_data(t_data *data, int argc, char *argv[]);
 
 //circular linked list
 t_clst	*clst_new(void *content);
