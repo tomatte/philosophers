@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 19:00:46 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/03 20:56:32 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/03 22:25:17 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ static void	exit_error(char *msg)
 static void	validate_qty(int argc)
 {
 	if (argc < 4)
-		exit_error("Too few args");
+		exit_error("too few args");
 	if (argc > 5)
-		exit_error("Too many args");
+		exit_error("too many args");
 }
 
 static void	validate_type(int argc, char *argv[])
