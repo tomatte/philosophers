@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:23:02 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/05 11:45:29 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/05 13:23:40 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,12 @@ typedef struct s_data
 	int	eat_times;
 }	t_data;
 
+typedef struct s_fork
+{
+	int				owner;
+	pthread_mutex_t	mutex;
+}	t_fork;
+
 typedef struct s_table
 {
 	t_data	data;
@@ -56,6 +62,7 @@ typedef struct s_table
 void	validation(int argc, char *argv[]);
 void	fill_data(t_data *data, int argc, char *argv[]);
 t_clst	*create_philos(t_data *data);
+t_clst	*create_forks(t_data *data);
 
 //utils
 void	action(int ms);

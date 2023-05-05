@@ -6,29 +6,17 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:22:32 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/05 11:47:03 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/05 13:23:09 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philosophers.h>
 
-/* static void	execute_philos(t_all *all)
+static void	clear_table(t_table *table)
 {
-	t_philo	*philo;
-	t_clst	*philos;
-	t_clst	*aux;
-
-	philos = all->philos;
-	philo = p(philos);
-	pthread_create(&philo->t, NULL, &philo_routine, (void *) all);
-	aux = philos->next;
-	while (aux != philos)
-	{
-		philo= p(aux);
-		pthread_create(&philo->t, NULL, &philo_routine, (void *) all);
-		aux = aux->next;
-	}
-} */
+	clst_clear(&table->philos, free);
+	clst_clear(&table->forks, free);
+}
 
 int main(int argc, char *argv[])
 {
@@ -37,7 +25,8 @@ int main(int argc, char *argv[])
 	validation(argc, argv);
 	fill_data(&table.data, argc, argv);
 	table.philos = create_philos(&table.data);
-	clst_clear(&table.philos, free);
+	table.forks = create_forks(&table.data);
+	clear_table(&table);
 	return (0);
 }
 

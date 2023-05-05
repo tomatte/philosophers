@@ -7,6 +7,7 @@ SRC			=	main.c \
 				fill_data.c \
 				create_philos.c \
 				utils.c \
+				create_forks.c \
 
 
 INCLUDES	=	-I./includes
