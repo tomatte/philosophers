@@ -1,47 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   create_philos.c                                    :+:      :+:    :+:   */
+/*   clst_iter.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/04 17:55:38 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/05 13:26:40 by dbrandao         ###   ########.fr       */
+/*   Created: 2023/05/05 13:38:17 by dbrandao          #+#    #+#             */
+/*   Updated: 2023/05/05 15:55:09 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philosophers.h>
 
-static t_clst	*new_philo(int num)
+void	clst_iter(t_clst *lst, void (*exec)(t_clst *))
 {
-	t_clst		*node;
-	t_philo		*philo;
+	t_clst	*pass;
 
-	philo = ft_calloc(1, sizeof(t_philo));
-	philo->num = num;
-	node = clst_new(philo);
-	return (node);
+	exec(lst);
+	pass = lst->next;
+	while (pass != lst)
+	{
+		exec(pass);
+		pass = pass->next;
+	}
 }
-
-t_clst	*create_philos(t_data *data)
-{
-	t_clst	*philos;
-	int		i;
-
-	philos = NULL;
-	i = 0;
-	while (++i <= data->philo_qty)
-		clst_add_back(&philos, new_philo(i));
-	return (philos);
-}
-
-/*
-	left
-	mutex1
-
-	left
-	mutex1
-
- 	left
-	mutex1
- */

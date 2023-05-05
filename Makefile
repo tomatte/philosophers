@@ -8,6 +8,7 @@ SRC			=	main.c \
 				create_philos.c \
 				utils.c \
 				create_forks.c \
+				clst_iter.c \
 
 
 INCLUDES	=	-I./includes

@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:22:32 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/05 13:23:09 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/05 15:59:27 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,16 @@ static void	clear_table(t_table *table)
 {
 	clst_clear(&table->philos, free);
 	clst_clear(&table->forks, free);
+}
+
+void	execute_threads(t_table *table)
+{
+
+}
+
+void	print_num(t_clst *lst)
+{
+	ft_printf("num: %d\n", p(lst)->num);
 }
 
 int main(int argc, char *argv[])

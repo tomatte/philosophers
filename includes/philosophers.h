@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:23:02 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/05 13:23:40 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/05 15:55:22 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,6 @@ typedef struct s_clst
 
 typedef struct s_philo
 {
-	int				left_fork;
-	int				right_fork;
-	pthread_mutex_t	left_mutex;
-	pthread_mutex_t	right_mutex;
 	int				num;
 	pthread_t		t;
 }	t_philo;
@@ -73,5 +69,6 @@ t_clst	*clst_new(void *content);
 t_clst	*clst_last(t_clst *lst);
 void	clst_add_back(t_clst **lst, t_clst *node);
 void	clst_clear(t_clst **lst, void (*del)(void *));
+void	clst_iter(t_clst *lst, void (*exec)(t_clst *));
 
 #endif
