@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:23:02 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/04 18:11:09 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/04 21:51:54 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,12 @@ typedef struct s_clst
 
 typedef struct s_philo
 {
-	int			left_fork;
-	int			right_fork;
-	int			num;
-	pthread_t	t;
+	int				left_fork;
+	int				right_fork;
+	pthread_mutex_t	left_mutex;
+	pthread_mutex_t	right_mutex;
+	int				num;
+	pthread_t		t;
 }	t_philo;
 
 typedef struct s_data
@@ -46,6 +48,8 @@ typedef struct s_data
 void	validation(int argc, char *argv[]);
 void	fill_data(t_data *data, int argc, char *argv[]);
 t_clst	*create_philos(t_data *data);
+t_philo	*p(t_clst *philos);
+void	philo_routine(t_clst *philos, t_data *data);
 
 //circular linked list
 t_clst	*clst_new(void *content);

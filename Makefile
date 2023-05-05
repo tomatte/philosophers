@@ -6,6 +6,8 @@ SRC			=	main.c \
 				clst_clear.c \
 				fill_data.c \
 				create_philos.c \
+				p.c \
+				philo_routine.c \
 
 
 INCLUDES	=	-I./includes
