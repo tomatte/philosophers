@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 15:34:35 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/04 16:05:35 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/05 11:11:07 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ t_clst	*clst_new(void *content)
 	node = ft_calloc(1, sizeof(t_clst));
 	node->next = node;
 	node->prev = node;
+	node->index = 0;
 	node->content = content;
 	return (node);
 }

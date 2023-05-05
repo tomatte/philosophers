@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 15:41:15 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/04 18:10:04 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/05 11:12:41 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	clst_add_back(t_clst **lst, t_clst *node)
 	if (*lst == NULL)
 	{
 		*lst = node;
+		node->index = 0;
 		return ;
 	}
 	aux = clst_last(*lst);
@@ -28,6 +29,7 @@ void	clst_add_back(t_clst **lst, t_clst *node)
 	node->next = *lst;
 	aux->next = node;
 	(*lst)->prev = node;
+	node->index = node->prev->index + 1;
 }
 
 /*

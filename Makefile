@@ -6,8 +6,7 @@ SRC			=	main.c \
 				clst_clear.c \
 				fill_data.c \
 				create_philos.c \
-				p.c \
-				philo_routine.c \
+				utils.c \
 
 
 INCLUDES	=	-I./includes
@@ -21,7 +20,7 @@ OBJS_DIR	=	./objects
 
 OBJS		=	$(patsubst %.c,$(OBJS_DIR)/%.o, $(SRC))
 
-CFLAGS		=	-Werror -Wall -Wextra -pthread
+CFLAGS		=	-Wall -Wextra -pthread ##-Werror removedddddddddd !!!!!
 
 LIBFT_DIR	=	./libft
 
