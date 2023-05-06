@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:23:02 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/06 11:33:38 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/06 12:10:35 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ t_clst	*create_philos(t_data *data, t_clst *forks);
 t_clst	*create_forks(t_data *data);
 void	execute_threads(t_table *table);
 void	*routine(void *vtable);
+void	eat(t_clst *node, t_philo *philo);
 
 //utils
 t_philo	*p(t_clst *philos);

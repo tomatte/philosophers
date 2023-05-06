@@ -11,6 +11,7 @@ SRC			=	main.c \
 				clst_iter.c \
 				execute_threads.c \
 				routine.c \
+				eat.c \
 
 
 INCLUDES	=	-I./includes
