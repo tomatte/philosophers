@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 21:45:14 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/06 11:28:07 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/06 11:33:23 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,22 @@ int	get_ms(t_philo *philo)
 	microseconds = (philo->end.tv_usec - philo->start.tv_usec);
 	ms = seconds * 1000 + microseconds / 1000;
 	return (ms);
+}
+
+t_clst	*get_node(t_clst *lst, int index)
+{
+	t_clst	*pass;
+
+	if (lst == NULL || index < 0)
+		return (NULL);
+	if (lst->index == index)
+		return (lst);
+	pass = lst->next;
+	while (pass != lst)
+	{
+		if (pass->index == index)
+			return (pass);
+		pass = pass->next;
+	}
+	return (NULL);
 }

@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:23:02 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/06 11:28:12 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/06 11:33:38 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ void	*routine(void *vtable);
 t_philo	*p(t_clst *philos);
 void	print_msg(int ms, int num, char *act);
 int		get_ms(t_philo *philo);
+t_clst	*get_node(t_clst *lst, int index);
 
 //circular linked list
 t_clst	*clst_new(void *content);
