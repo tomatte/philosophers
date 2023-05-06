@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:23:02 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/06 09:45:49 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/06 09:48:37 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,6 @@ t_clst	*clst_new(void *content);
 t_clst	*clst_last(t_clst *lst);
 void	clst_add_back(t_clst **lst, t_clst *node);
 void	clst_clear(t_clst **lst, void (*del)(void *));
-void	clst_iter(t_clst *lst, void (*exec)(t_clst *, void *), void *arg);
+void	clst_iter(t_clst *lst, void (*exec)(t_clst *));
 
 #endif
