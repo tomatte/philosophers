@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:23:02 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/06 10:19:15 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/06 11:28:12 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 #include <pthread.h>
 #include <sys/time.h>
 #include "../libft/includes/libftprintf.h"
+
+# define MSG_LEN 10000
 
 typedef struct s_clst
 {
@@ -66,8 +68,9 @@ void	execute_threads(t_table *table);
 void	*routine(void *vtable);
 
 //utils
-void	action(int ms);
 t_philo	*p(t_clst *philos);
+void	print_msg(int ms, int num, char *act);
+int		get_ms(t_philo *philo);
 
 //circular linked list
 t_clst	*clst_new(void *content);

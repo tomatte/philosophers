@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 08:53:36 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/06 10:28:28 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/06 11:27:03 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,37 +16,40 @@
 	restart timelapse when start eating
  */
 
-static int	get_ms(t_philo *philo)
-{
-	int	seconds;
-	int	microseconds;
-	int	ms;
-
-	gettimeofday(&philo->end, NULL);
-	seconds = (philo->end.tv_sec - philo->start.tv_sec);
-	microseconds = (philo->end.tv_usec - philo->start.tv_usec);
-	ms = seconds * 1000 + microseconds / 1000;
-	return (ms);
-}
-
 static void	eat(t_clst *node, t_philo *philo)
 {
 	int	ms;
 
 	philo = node->content;
-	sleep(node->index);
+	gettimeofday(&philo->start, NULL);
+	usleep(philo->data->eat_ms * 1000);
 	ms = get_ms(philo);
-	ft_printf("%d finished eating at %d\n", node->index, ms);
+	print_msg(ms, philo->num, "is eating\n");
+}
+
+static void	philo_sleep(t_clst *node, t_philo *philo)
+{
+	int	ms;
+
+	ms = get_ms(philo);
+	print_msg(ms, philo->num, " is sleeping\n");
+	usleep(philo->data->sleep_ms * 1000);
 }
 
 void	*routine(void *vnode)
 {
 	t_clst	*node;
 	t_philo	*philo;
+	int		i;
 
 	node = vnode;
 	philo = node->content;
-	gettimeofday(&philo->start, NULL);
-	eat(node, philo);
+	i = 0;
+	while (i++ < 10)
+	{
+		gettimeofday(&philo->start, NULL);
+		eat(node, philo);
+		philo_sleep(node, philo);
+	}
 	return (NULL);
 }
