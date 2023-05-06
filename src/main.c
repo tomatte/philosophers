@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:22:32 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/06 09:41:24 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/06 10:07:49 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ int main(int argc, char *argv[])
 
 	validation(argc, argv);
 	fill_data(&data, argc, argv);
-	table.philos = create_philos(&data);
 	table.forks = create_forks(&data);
+	table.philos = create_philos(&data, table.forks);
 	execute_threads(&table);
 	clear_table(&table);
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:23:02 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/06 09:48:37 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/06 10:19:15 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,12 @@ typedef struct s_data
 
 typedef struct s_philo
 {
-	int			num;
-	pthread_t	t;
-	t_data		*data;
+	int				num;
+	pthread_t		t;
+	t_data			*data;
+	t_clst			*forks;
+	struct timeval	start;
+	struct timeval	end;
 }	t_philo;
 
 typedef struct s_fork
@@ -57,7 +60,7 @@ typedef struct s_table
 
 void	validation(int argc, char *argv[]);
 void	fill_data(t_data *data, int argc, char *argv[]);
-t_clst	*create_philos(t_data *data);
+t_clst	*create_philos(t_data *data, t_clst *forks);
 t_clst	*create_forks(t_data *data);
 void	execute_threads(t_table *table);
 void	*routine(void *vtable);
