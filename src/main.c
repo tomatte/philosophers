@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:22:32 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/05 19:11:39 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/06 09:41:24 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,12 @@ void	print_num(t_clst *lst)
 int main(int argc, char *argv[])
 {
 	t_table	table;
+	t_data	data;
 
 	validation(argc, argv);
-	fill_data(&table.data, argc, argv);
-	table.philos = create_philos(&table.data);
-	table.forks = create_forks(&table.data);
+	fill_data(&data, argc, argv);
+	table.philos = create_philos(&data);
+	table.forks = create_forks(&data);
 	execute_threads(&table);
 	clear_table(&table);
 	return (0);

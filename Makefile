@@ -10,6 +10,7 @@ SRC			=	main.c \
 				create_forks.c \
 				clst_iter.c \
 				execute_threads.c \
+				routine.c \
 
 
 INCLUDES	=	-I./includes

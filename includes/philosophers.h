@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:23:02 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/05 19:46:57 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/06 09:45:49 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,6 @@ typedef struct s_clst
 	struct s_clst	*prev;
 }	t_clst;
 
-typedef struct s_philo
-{
-	int				num;
-	pthread_t		t;
-}	t_philo;
-
 typedef struct s_data
 {
 	int	philo_qty;
@@ -42,6 +36,13 @@ typedef struct s_data
 	int	eat_times;
 }	t_data;
 
+typedef struct s_philo
+{
+	int			num;
+	pthread_t	t;
+	t_data		*data;
+}	t_philo;
+
 typedef struct s_fork
 {
 	int				owner;
@@ -50,7 +51,6 @@ typedef struct s_fork
 
 typedef struct s_table
 {
-	t_data	data;
 	t_clst	*philos;
 	t_clst	*forks;
 }	t_table;
@@ -60,6 +60,7 @@ void	fill_data(t_data *data, int argc, char *argv[]);
 t_clst	*create_philos(t_data *data);
 t_clst	*create_forks(t_data *data);
 void	execute_threads(t_table *table);
+void	*routine(void *vtable);
 
 //utils
 void	action(int ms);

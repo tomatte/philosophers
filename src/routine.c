@@ -1,37 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   execute_threads.c                                  :+:      :+:    :+:   */
+/*   routine.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/05 19:10:50 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/06 09:44:43 by dbrandao         ###   ########.fr       */
+/*   Created: 2023/05/06 08:53:36 by dbrandao          #+#    #+#             */
+/*   Updated: 2023/05/06 09:45:28 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philosophers.h>
 
-static void	create_thread(t_clst *node, void *vtable)
+static void	eat(t_clst *node)
 {
-	t_philo	*philo;
-
-	(void)vtable;
-	philo = p(node);
-	pthread_create(&philo->t, NULL, routine, node);
+	sleep(node->index);
+	ft_printf("%d just ate\n", node->index);
 }
 
-static void	wait_thread(t_clst *node, void *nothing)
+void	*routine(void *vnode)
 {
-	t_philo	*philo;
+	t_clst	*node;
 
-	(void)nothing;
-	philo = p(node);
-	pthread_join(philo->t, NULL);
-}
-
-void	execute_threads(t_table *table)
-{
-	clst_iter(table->philos, create_thread, (void *) table);
-	clst_iter(table->philos, wait_thread, NULL);
+	node = vnode;
+	eat(node);
+	return (NULL);
 }
