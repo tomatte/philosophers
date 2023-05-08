@@ -6,13 +6,13 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 08:53:36 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/08 14:41:19 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/08 15:06:28 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philosophers.h>
 
-static void	philo_sleep(t_clst *node, t_philo *philo)
+static void	philo_sleep(t_philo *philo)
 {
 	int	ms;
 
@@ -50,7 +50,7 @@ void	*routine(void *vnode)
 	while (times_to_eat == -1 || i++ < times_to_eat)
 	{
 		eat(node, philo);
-		philo_sleep(node, philo);
+		philo_sleep(philo);
 		philo_think(node);
 		if (*philo->dead)
 			break ;
