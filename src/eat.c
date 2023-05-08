@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 12:10:16 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/07 13:15:12 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/08 14:17:28 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static int	is_dead(int ms, t_clst *node)
 	t_philo	*philo;
 
 	philo = node->content;
-	if (ms >= philo->data->die_ms)
+	if (ms - philo->last_ms >= philo->data->die_ms)
 	{
 		print_msg(ms, philo->num, " died\n");
 		philo->is_dead = 1;
@@ -71,8 +71,8 @@ void	eat(t_clst *node, t_philo *philo)
 	if (philo->is_dead)
 		return ;
 	ms = get_ms(philo);
+	philo->last_ms = ms;
 	print_msg(ms, philo->num, " is eating\n");
-	gettimeofday(&philo->start, NULL);
 	usleep(philo->data->eat_ms * 1000);
 	put_forks_back(node);
 }

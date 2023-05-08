@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:23:02 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/07 13:16:03 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/08 14:15:41 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ typedef struct s_philo
 	t_clst			*forks;
 	struct timeval	start;
 	struct timeval	end;
+	int				last_ms;
 }	t_philo;
 
 typedef struct s_fork
