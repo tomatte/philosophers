@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 19:00:46 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/04 17:47:26 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/08 15:04:08 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	exit_error(char *msg)
 	exit(1);
 }
 
-static void	validate_qty(int argc)
+static void	validate_arg_qty(int argc)
 {
 	if (argc < 5)
 		exit_error("Too few args");
@@ -41,8 +41,18 @@ static void	validate_type(int argc, char *argv[])
 	}
 }
 
+static void	validate_philo_qty(char *argv[])
+{
+	int	philo_qty;
+
+	philo_qty = ft_atoi(argv[1]);
+	if (philo_qty <= 1)
+		exit_error("too few philos, need at least 2");
+}
+
 void	validation(int argc, char *argv[])
 {
-	validate_qty(argc);
+	validate_arg_qty(argc);
 	validate_type(argc, argv);
+	validate_philo_qty(argv);
 }
