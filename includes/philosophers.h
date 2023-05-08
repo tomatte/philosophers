@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:23:02 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/06 12:10:35 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/07 13:16:03 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ typedef struct s_data
 typedef struct s_philo
 {
 	int				num;
+	int				is_dead;
 	pthread_t		t;
 	t_data			*data;
 	t_clst			*forks;

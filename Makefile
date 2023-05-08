@@ -25,7 +25,7 @@ OBJS_DIR	=	./objects
 
 OBJS		=	$(patsubst %.c,$(OBJS_DIR)/%.o, $(SRC))
 
-CFLAGS		=	-Wall -Wextra -pthread ##-Werror removedddddddddd !!!!!
+CFLAGS		=	-Wall -Wextra -pthread -g3 ##-Werror removedddddddddd !!!!!
 
 LIBFT_DIR	=	./libft
 

@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 17:55:38 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/06 10:17:34 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/07 13:17:38 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ static t_clst	*new_philo(int num, t_data *data, t_clst *forks)
 	philo->num = num;
 	philo->data = data;
 	philo->forks = forks;
+	philo->is_dead = 0;
 	node = clst_new(philo);
 	return (node);
 }

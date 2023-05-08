@@ -6,11 +6,41 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 12:10:16 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/06 12:10:25 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/07 13:15:12 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philosophers.h>
+
+static void	put_forks_back(t_clst *node)
+{
+	t_philo *philo;
+	t_fork	*fork1;
+	t_fork	*fork2;
+
+	philo = node->content;
+	fork1 = get_node(philo->forks, node->index)->content;
+	fork2 = get_node(philo->forks, node->next->index)->content;
+	fork1->owner = 0;
+	fork2->owner = 0;
+	pthread_mutex_unlock(&fork1->mutex);
+	pthread_mutex_unlock(&fork2->mutex);
+}
+
+static int	is_dead(int ms, t_clst *node)
+{
+	t_philo	*philo;
+
+	philo = node->content;
+	if (ms >= philo->data->die_ms)
+	{
+		print_msg(ms, philo->num, " died\n");
+		philo->is_dead = 1;
+		put_forks_back(node);
+		return (1);
+	}
+	return (0);
+}
 
 static void	take_forks(t_clst *node)
 {
@@ -25,20 +55,11 @@ static void	take_forks(t_clst *node)
 	pthread_mutex_lock(&fork1->mutex);
 	pthread_mutex_lock(&fork2->mutex);
 	ms = get_ms(philo);
+	if (is_dead(ms, node))
+		return ;
+	fork1->owner = philo->num;
+	fork2->owner = philo->num;
 	print_msg(ms, philo->num, " has taken a fork\n");
-}
-
-static void	put_forks_back(t_clst *node)
-{
-	t_philo *philo;
-	t_fork	*fork1;
-	t_fork	*fork2;
-
-	philo = node->content;
-	fork1 = get_node(philo->forks, node->index)->content;
-	fork2 = get_node(philo->forks, node->next->index)->content;
-	pthread_mutex_unlock(&fork1->mutex);
-	pthread_mutex_unlock(&fork2->mutex);
 }
 
 void	eat(t_clst *node, t_philo *philo)
@@ -47,6 +68,8 @@ void	eat(t_clst *node, t_philo *philo)
 
 	philo = node->content;
 	take_forks(node);
+	if (philo->is_dead)
+		return ;
 	ms = get_ms(philo);
 	print_msg(ms, philo->num, " is eating\n");
 	gettimeofday(&philo->start, NULL);

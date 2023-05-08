@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 08:53:36 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/06 12:18:47 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/07 13:16:40 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,19 @@ void	*routine(void *vnode)
 {
 	t_clst	*node;
 	t_philo	*philo;
+	int		times_to_eat;
 	int		i;
 
 	node = vnode;
 	philo = node->content;
+	times_to_eat = philo->data->eat_times;
 	gettimeofday(&philo->start, NULL);
 	i = 0;
-	while (i++ < 10)
+	while (times_to_eat == -1 || i++ < times_to_eat)
 	{
 		eat(node, philo);
+		if (philo->is_dead)
+			break ;
 		philo_sleep(node, philo);
 		philo_think(node);
 	}
