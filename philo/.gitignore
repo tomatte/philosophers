@@ -2,3 +2,4 @@ philosophers
 *.o
 *.a
 .vscode
+*.json
