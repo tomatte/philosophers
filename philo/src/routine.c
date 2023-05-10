@@ -6,17 +6,19 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 08:53:36 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/09 13:45:06 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/10 10:15:12 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philosophers.h>
 
-static void	philo_sleep(t_philo *philo)
+static void	philo_sleep(t_clst *node)
 {
-	int	ms;
+	t_philo	*philo;
+	int		ms;
 
-	if (*philo->dead)
+	philo = node->content;
+	if (is_dead2(node))
 		return ;
 	ms = get_ms(philo);
 	print_msg(ms, philo->num, " is sleeping\n");
@@ -29,7 +31,7 @@ static void	philo_think(t_clst *node)
 	int		ms;
 
 	philo = node->content;
-	if (*philo->dead)
+	if (is_dead2(node))
 		return ;
 	ms = get_ms(philo);
 	print_msg(ms, philo->num, " is thinking\n");
@@ -51,9 +53,9 @@ void	*routine(void *vnode)
 	while (times_to_eat == -1 || i++ < times_to_eat)
 	{
 		eat(node, philo);
-		philo_sleep(philo);
+		philo_sleep(node);
 		philo_think(node);
-		if (*philo->dead)
+		if (is_dead2(node))
 			break ;
 	}
 	return (NULL);

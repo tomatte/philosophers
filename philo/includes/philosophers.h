@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:23:02 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/09 14:00:39 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/10 10:12:09 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ typedef struct s_philo
 	struct timeval	end;
 	int				started;
 	int				last_ms;
+	pthread_mutex_t	dead_mutex;
 }	t_philo;
 
 typedef struct s_fork
@@ -79,6 +80,7 @@ t_philo	*p(t_clst *philos);
 void	print_msg(int ms, int num, char *act);
 int		get_ms(t_philo *philo);
 t_clst	*get_node(t_clst *lst, int index);
+int		is_dead2(t_clst *node);
 
 //circular linked list
 t_clst	*clst_new(void *content);
