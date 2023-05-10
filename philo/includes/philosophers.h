@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:23:02 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/09 10:56:48 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/09 14:00:39 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,9 @@ typedef struct s_fork
 
 typedef struct s_table
 {
-	t_clst	*philos;
-	t_clst	*forks;
+	t_clst		*philos;
+	t_clst		*forks;
+	pthread_t	guardian;
 }	t_table;
 
 void	validation(int argc, char *argv[]);
@@ -70,6 +71,8 @@ t_clst	*create_forks(t_data *data);
 void	execute_threads(t_table *table);
 void	*routine(void *vtable);
 void	eat(t_clst *node, t_philo *philo);
+int		is_dead(int ms, t_clst *node);
+void	start_guardian(t_table *table);
 
 //utils
 t_philo	*p(t_clst *philos);

@@ -12,6 +12,7 @@ SRC			=	main.c \
 				execute_threads.c \
 				routine.c \
 				eat.c \
+				start_guardian.c \
 
 
 INCLUDES	=	-I./includes

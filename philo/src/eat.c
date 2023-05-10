@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 12:10:16 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/08 14:47:25 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/09 14:33:36 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void	put_forks_back(t_clst *node)
 	pthread_mutex_unlock(&fork2->mutex);
 }
 
-static int	is_dead(int ms, t_clst *node)
+int	is_dead(int ms, t_clst *node)
 {
 	t_philo	*philo;
 
@@ -59,7 +59,7 @@ static void	take_forks(t_clst *node)
 	pthread_mutex_lock(&fork1->mutex);
 	pthread_mutex_lock(&fork2->mutex);
 	ms = get_ms(philo);
-	if (is_dead(ms, node))
+	if (is_dead(ms, node) || *philo->dead)
 		return ;
 	print_msg(ms, philo->num, " has taken a fork\n");
 	print_msg(ms, philo->num, " has taken a fork\n");

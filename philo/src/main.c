@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:22:32 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/07 13:16:21 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/09 14:19:58 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,9 @@ int main(int argc, char *argv[])
 	fill_data(&data, argc, argv);
 	table.forks = create_forks(&data);
 	table.philos = create_philos(&data, table.forks);
+	start_guardian(&table);
 	execute_threads(&table);
+	pthread_join(table.guardian, NULL);
 	clear_table(&table);
 	return (0);
 }
