@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 19:00:46 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/08 15:04:08 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/11 18:25:51 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,18 +41,23 @@ static void	validate_type(int argc, char *argv[])
 	}
 }
 
-static void	validate_philo_qty(char *argv[])
+static void	validate_quantities(int argc, char *argv[])
 {
-	int	philo_qty;
-
-	philo_qty = ft_atoi(argv[1]);
-	if (philo_qty <= 1)
+	if (ft_atoi(argv[1]) <= 0)
 		exit_error("too few philos, need at least 2");
+	if (ft_atoi(argv[2]) < 0)
+		exit_error("time to die must to be positive");
+	if (ft_atoi(argv[3]) < 0)
+		exit_error("time to eat must to be positive");
+	if (ft_atoi(argv[4]) < 0)
+		exit_error("time to sleep must to be positive");
+	if (argc == 6 && ft_atoi(argv[2]) < 0)
+		exit_error("number of times to eat must to be positive");
 }
 
 void	validation(int argc, char *argv[])
 {
 	validate_arg_qty(argc);
 	validate_type(argc, argv);
-	validate_philo_qty(argv);
+	validate_quantities(argc, argv);
 }

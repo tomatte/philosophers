@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 21:45:14 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/11 16:40:28 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/11 18:04:31 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ void	print_msg(int ms, int num, char *act, t_philo *philo)
 	ms_str = ft_itoa(ms);
 	num_str = ft_itoa(num);
 	ft_strlcpy(msg, ms_str, MSG_LEN);
-	ft_strlcat(msg, "ms ", MSG_LEN);
+	ft_strlcat(msg, " ", MSG_LEN);
 	ft_strlcat(msg, num_str, MSG_LEN);
 	ft_strlcat(msg, act, MSG_LEN);
 	ft_putstr(msg);
