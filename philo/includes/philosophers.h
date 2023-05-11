@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:23:02 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/11 16:02:13 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/11 16:25:39 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ typedef struct s_philo
 	pthread_mutex_t	*dead_mutex;
 	pthread_mutex_t	lastms_mutex;
 	pthread_mutex_t	getms_mutex;
+	pthread_mutex_t	start_mutex;
 }	t_philo;
 
 typedef struct s_fork

@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 08:53:36 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/11 16:06:04 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/11 16:27:24 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,9 @@ void	*routine(void *vnode)
 	pthread_mutex_lock(&philo->getms_mutex);
 	gettimeofday(&philo->start, NULL);
 	pthread_mutex_unlock(&philo->getms_mutex);
+	pthread_mutex_lock(&philo->start_mutex);
+	philo->started = 1;
+	pthread_mutex_unlock(&philo->start_mutex);
 	i = 0;
 	while (times_to_eat == -1 || i++ < times_to_eat)
 	{
