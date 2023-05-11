@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 13:51:26 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/11 16:43:03 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/11 19:45:14 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ static void	*guard_threads(void *vphilos)
 
 	philos = vphilos;
 	philo = philos->content;
+	if (philo->data->eat_times == 0)
+		return (NULL);
 	while (1)
 	{
 		pthread_mutex_lock(&philo->start_mutex);

@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 19:00:46 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/11 19:00:41 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/11 19:43:12 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static void	validate_quantities(int argc, char *argv[])
 		exit_error("time to eat must to be positive");
 	if (ft_atoi(argv[4]) < 0)
 		exit_error("time to sleep must to be positive");
-	if (argc == 6 && ft_atoi(argv[2]) < 0)
+	if (argc == 6 && ft_atoi(argv[5]) < 0)
 		exit_error("number of times to eat must to be positive");
 }
 
