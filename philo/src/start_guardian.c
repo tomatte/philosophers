@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 13:51:26 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/11 16:31:13 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/11 16:43:03 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ static void	*guard_threads(void *vphilos)
 		pthread_mutex_unlock(&philo->start_mutex);
 		usleep(50);
 	}
+	pthread_mutex_unlock(&philo->start_mutex);
 	while (1)
 	{
 		if (is_dead(philos))
