@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 19:00:46 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/11 18:25:51 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/11 19:00:41 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static void	validate_type(int argc, char *argv[])
 static void	validate_quantities(int argc, char *argv[])
 {
 	if (ft_atoi(argv[1]) <= 0)
-		exit_error("too few philos, need at least 2");
+		exit_error("too few philos, need at least 1");
 	if (ft_atoi(argv[2]) < 0)
 		exit_error("time to die must to be positive");
 	if (ft_atoi(argv[3]) < 0)
