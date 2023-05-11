@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 21:45:14 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/11 15:53:19 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/11 16:05:35 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,11 @@ int	get_ms(t_philo *philo)
 	int	microseconds;
 	int	ms;
 
+	pthread_mutex_lock(&philo->getms_mutex);
 	gettimeofday(&philo->end, NULL);
 	seconds = (philo->end.tv_sec - philo->start.tv_sec);
 	microseconds = (philo->end.tv_usec - philo->start.tv_usec);
+	pthread_mutex_unlock(&philo->getms_mutex);
 	ms = seconds * 1000 + microseconds / 1000;
 	return (ms);
 }
