@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 17:55:38 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/10 09:57:34 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/10 10:36:39 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ static t_clst	*new_philo(int num, t_data *data, t_clst *forks, int *dead)
 	philo = ft_calloc(1, sizeof(t_philo));
 	ft_bzero(philo, sizeof(t_philo));
 	pthread_mutex_init(&philo->dead_mutex, NULL);
+	pthread_mutex_init(&philo->started_mutex, NULL);
 	philo->num = num;
 	philo->data = data;
 	philo->forks = forks;

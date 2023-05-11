@@ -3,3 +3,5 @@ philosophers
 *.a
 .vscode
 *.json
+.vscode
+.gitignore
