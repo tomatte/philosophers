@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 08:53:36 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/10 10:37:24 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/11 10:35:40 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,7 @@ void	*routine(void *vnode)
 	philo = node->content;
 	times_to_eat = philo->data->eat_times;
 	gettimeofday(&philo->start, NULL);
-	pthread_mutex_lock(&philo->started_mutex);
 	philo->started = 1;
-	pthread_mutex_unlock(&philo->started_mutex);
 	i = 0;
 	while (times_to_eat == -1 || i++ < times_to_eat)
 	{
