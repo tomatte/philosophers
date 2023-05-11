@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:23:02 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/11 11:50:07 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/11 15:51:28 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct s_data
 	int	eat_ms;
 	int	sleep_ms;
 	int	eat_times;
+	pthread_mutex_t	dead_mutex;
 }	t_data;
 
 typedef struct s_philo
@@ -49,8 +50,7 @@ typedef struct s_philo
 	struct timeval	end;
 	int				started;
 	int				last_ms;
-	pthread_mutex_t	dead_mutex;
-	pthread_mutex_t	started_mutex;
+	pthread_mutex_t	*dead_mutex;
 	pthread_mutex_t	lastms_mutex;
 }	t_philo;
 

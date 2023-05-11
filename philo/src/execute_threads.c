@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 19:10:50 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/06 09:49:08 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/11 15:46:50 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,7 @@ static void	wait_thread(t_clst *node)
 void	execute_threads(t_table *table)
 {
 	clst_iter(table->philos, create_thread);
+	start_guardian(table);
 	clst_iter(table->philos, wait_thread);
+	pthread_join(table->guardian, NULL);
 }

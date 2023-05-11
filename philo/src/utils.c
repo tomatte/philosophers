@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 21:45:14 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/11 11:51:49 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/11 15:53:19 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,9 @@ int	is_dead(t_clst *node)
 	if (ms - philo->last_ms >= philo->data->die_ms)
 	{
 		print_msg(ms, philo->num, " died\n", philo);
+		pthread_mutex_lock(philo->dead_mutex);
 		*philo->dead = 1;
+		pthread_mutex_unlock(philo->dead_mutex);
 		dead = 1;
 	}
 	return (dead);
