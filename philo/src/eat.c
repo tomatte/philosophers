@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 12:10:16 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/11 11:36:59 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/11 17:25:31 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,16 @@ static void	take_forks(t_clst *node)
 	philo = node->content;
 	fork1 = get_node(philo->forks, node->index)->content;
 	fork2 = get_node(philo->forks, node->next->index)->content;
-	pthread_mutex_lock(&fork1->mutex);
-	pthread_mutex_lock(&fork2->mutex);
+	if (node->next->index == 0)
+	{
+		pthread_mutex_lock(&fork2->mutex);
+		pthread_mutex_lock(&fork1->mutex);
+	}
+	else
+	{
+		pthread_mutex_lock(&fork1->mutex);
+		pthread_mutex_lock(&fork2->mutex);
+	}
 	ms = get_ms(philo);
 	print_msg(ms, philo->num, " has taken a fork\n", philo);
 	print_msg(ms, philo->num, " has taken a fork\n", philo);
