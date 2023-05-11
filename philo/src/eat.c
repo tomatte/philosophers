@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 12:10:16 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/11 18:59:29 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/11 19:14:01 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	put_forks_back(t_clst *node)
 {
-	t_philo *philo;
+	t_philo	*philo;
 	t_fork	*fork1;
 	t_fork	*fork2;
 
@@ -31,7 +31,7 @@ static void	put_forks_back(t_clst *node)
 
 static void	take_forks(t_clst *node)
 {
-	t_philo *philo;
+	t_philo	*philo;
 	t_fork	*fork1;
 	t_fork	*fork2;
 	int		ms;
@@ -58,7 +58,7 @@ static void	take_forks(t_clst *node)
 
 static void	take_fork(t_clst *node)
 {
-	t_philo *philo;
+	t_philo	*philo;
 	t_fork	*fork1;
 	int		ms;
 

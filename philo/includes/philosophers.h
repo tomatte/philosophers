@@ -6,18 +6,18 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:23:02 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/11 16:25:39 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/11 19:12:31 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILOSOPHERS_H
 # define PHILOSOPHERS_H
 
-#include <stdlib.h>
-#include <unistd.h>
-#include <pthread.h>
-#include <sys/time.h>
-#include "../libft/includes/libftprintf.h"
+# include <stdlib.h>
+# include <unistd.h>
+# include <pthread.h>
+# include <sys/time.h>
+# include "../libft/includes/libftprintf.h"
 
 # define MSG_LEN 10000
 
@@ -31,11 +31,11 @@ typedef struct s_clst
 
 typedef struct s_data
 {
-	int	philo_qty;
-	int	die_ms;
-	int	eat_ms;
-	int	sleep_ms;
-	int	eat_times;
+	int				philo_qty;
+	int				die_ms;
+	int				eat_ms;
+	int				sleep_ms;
+	int				eat_times;
 	pthread_mutex_t	dead_mutex;
 }	t_data;
 
