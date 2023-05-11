@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:23:02 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/08 14:34:36 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/11 16:25:39 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct s_data
 	int	eat_ms;
 	int	sleep_ms;
 	int	eat_times;
+	pthread_mutex_t	dead_mutex;
 }	t_data;
 
 typedef struct s_philo
@@ -47,7 +48,12 @@ typedef struct s_philo
 	t_clst			*forks;
 	struct timeval	start;
 	struct timeval	end;
+	int				started;
 	int				last_ms;
+	pthread_mutex_t	*dead_mutex;
+	pthread_mutex_t	lastms_mutex;
+	pthread_mutex_t	getms_mutex;
+	pthread_mutex_t	start_mutex;
 }	t_philo;
 
 typedef struct s_fork
@@ -58,8 +64,9 @@ typedef struct s_fork
 
 typedef struct s_table
 {
-	t_clst	*philos;
-	t_clst	*forks;
+	t_clst		*philos;
+	t_clst		*forks;
+	pthread_t	guardian;
 }	t_table;
 
 void	validation(int argc, char *argv[]);
@@ -69,12 +76,15 @@ t_clst	*create_forks(t_data *data);
 void	execute_threads(t_table *table);
 void	*routine(void *vtable);
 void	eat(t_clst *node, t_philo *philo);
+void	start_guardian(t_table *table);
 
 //utils
 t_philo	*p(t_clst *philos);
-void	print_msg(int ms, int num, char *act);
+void	print_msg(int ms, int num, char *act, t_philo *philo);
 int		get_ms(t_philo *philo);
 t_clst	*get_node(t_clst *lst, int index);
+int		is_dead(t_clst *node);
+int		is_dead3(t_philo *philo);
 
 //circular linked list
 t_clst	*clst_new(void *content);

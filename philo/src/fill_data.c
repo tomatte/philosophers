@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 17:01:29 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/04 17:48:41 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/11 18:25:01 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	fill_data(t_data *data, int argc, char *argv[])
 {
+	pthread_mutex_init(&data->dead_mutex, NULL);
 	data->philo_qty = ft_atoi(argv[1]);
 	data->die_ms = ft_atoi(argv[2]);
 	data->eat_ms = ft_atoi(argv[3]);
