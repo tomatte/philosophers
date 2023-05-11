@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 21:45:14 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/11 10:36:23 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/11 10:42:28 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,24 +63,4 @@ t_clst	*get_node(t_clst *lst, int index)
 		pass = pass->next;
 	}
 	return (NULL);
-}
-
-int	is_dead2(t_clst *node)
-{
-	t_philo	*philo;
-	int		dead;
-	int		ms;
-
-	philo = node->content;
-	ms = get_ms(philo);
-	dead = 0;
-	if (*philo->dead)
-		dead = 1;
-	else if (ms - philo->last_ms >= philo->data->die_ms)
-	{
-		print_msg(ms, philo->num, " died\n");
-		*philo->dead = 1;
-		dead = 1;
-	}
-	return (dead);
 }

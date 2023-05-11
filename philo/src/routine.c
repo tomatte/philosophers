@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 08:53:36 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/11 10:35:40 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/11 10:46:03 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@ static void	philo_sleep(t_clst *node)
 	int		ms;
 
 	philo = node->content;
-	if (is_dead2(node))
-		return ;
 	ms = get_ms(philo);
 	print_msg(ms, philo->num, " is sleeping\n");
 	usleep(philo->data->sleep_ms * 1000);
@@ -31,8 +29,6 @@ static void	philo_think(t_clst *node)
 	int		ms;
 
 	philo = node->content;
-	if (is_dead2(node))
-		return ;
 	ms = get_ms(philo);
 	print_msg(ms, philo->num, " is thinking\n");
 }
@@ -55,8 +51,6 @@ void	*routine(void *vnode)
 		eat(node, philo);
 		philo_sleep(node);
 		philo_think(node);
-		if (is_dead2(node))
-			break ;
 	}
 	return (NULL);
 }
