@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:23:02 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/11 10:33:39 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/11 11:50:07 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ typedef struct s_philo
 	int				last_ms;
 	pthread_mutex_t	dead_mutex;
 	pthread_mutex_t	started_mutex;
+	pthread_mutex_t	lastms_mutex;
 }	t_philo;
 
 typedef struct s_fork
@@ -73,15 +74,15 @@ t_clst	*create_forks(t_data *data);
 void	execute_threads(t_table *table);
 void	*routine(void *vtable);
 void	eat(t_clst *node, t_philo *philo);
-int		is_dead(int ms, t_clst *node);
 void	start_guardian(t_table *table);
 
 //utils
 t_philo	*p(t_clst *philos);
-void	print_msg(int ms, int num, char *act);
+void	print_msg(int ms, int num, char *act, t_philo *philo);
 int		get_ms(t_philo *philo);
 t_clst	*get_node(t_clst *lst, int index);
-int		is_dead2(t_clst *node);
+int		is_dead(t_clst *node);
+int		is_dead3(t_philo *philo);
 
 //circular linked list
 t_clst	*clst_new(void *content);

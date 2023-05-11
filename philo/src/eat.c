@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 12:10:16 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/11 10:45:07 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/11 11:36:59 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,24 +27,6 @@ static void	put_forks_back(t_clst *node)
 	pthread_mutex_unlock(&fork2->mutex);
 }
 
-int	verify_dead(int ms, t_clst *node)
-{
-	t_philo	*philo;
-	int		dead;
-
-	philo = node->content;
-	dead = 0;
-	if (*philo->dead)
-		dead = 1;
-	else if (ms - philo->last_ms >= philo->data->die_ms)
-	{
-		print_msg(ms, philo->num, " died\n");
-		*philo->dead = 1;
-		dead = 1;
-	}
-	return (dead);
-}
-
 static void	take_forks(t_clst *node)
 {
 	t_philo *philo;
@@ -58,8 +40,8 @@ static void	take_forks(t_clst *node)
 	pthread_mutex_lock(&fork1->mutex);
 	pthread_mutex_lock(&fork2->mutex);
 	ms = get_ms(philo);
-	print_msg(ms, philo->num, " has taken a fork\n");
-	print_msg(ms, philo->num, " has taken a fork\n");
+	print_msg(ms, philo->num, " has taken a fork\n", philo);
+	print_msg(ms, philo->num, " has taken a fork\n", philo);
 	fork1->owner = philo->num;
 	fork2->owner = philo->num;
 }
@@ -71,8 +53,10 @@ void	eat(t_clst *node, t_philo *philo)
 	philo = node->content;
 	take_forks(node);
 	ms = get_ms(philo);
+	pthread_mutex_lock(&philo->lastms_mutex);
 	philo->last_ms = ms;
-	print_msg(ms, philo->num, " is eating\n");
+	pthread_mutex_unlock(&philo->lastms_mutex);
+	print_msg(ms, philo->num, " is eating\n", philo);
 	usleep(philo->data->eat_ms * 1000);
 	put_forks_back(node);
 }
