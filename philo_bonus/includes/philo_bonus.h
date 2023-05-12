@@ -17,7 +17,7 @@ typedef struct s_data
 	int		eat_ms;
 	int		sleep_ms;
 	int		eat_times;
-	int		pid;
+	pid_t	pid;
 	t_list	*pid_list;
 	sem_t	*semaphore;
 }	t_data;
