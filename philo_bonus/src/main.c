@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 08:02:00 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/12 10:15:15 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/12 10:18:31 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ int	main(int argc, char *argv[])
 	fill_data(&data, argc, argv);
 	create_childs(&data);
 	open_child_semaphore(&data);
+	routine(&data);
 	wait_childs(&data);
 	sem_close(data.semaphore);
 	ft_putstr("closed semaphore\n");
