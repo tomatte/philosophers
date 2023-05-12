@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 08:02:00 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/12 08:02:53 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/12 08:09:22 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,6 @@
 
 int	main(int argc, char *argv[])
 {
-	ft_printf("philo bonus started\n");
+	validation(argc, argv);
 	return 0;
 }

@@ -5,4 +5,6 @@
 # include <unistd.h>
 # include "../libft/includes/libftprintf.h"
 
+void	validation(int argc, char *argv[]);
+
 #endif
