@@ -1,5 +1,6 @@
 SRC			=	main.c \
 				validation.c \
+				fill_data.c \
 
 
 INCLUDES	=	-I./includes
