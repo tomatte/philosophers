@@ -5,6 +5,7 @@
 # include <unistd.h>
 # include <semaphore.h>
 # include <fcntl.h>
+# include <sys/wait.h>
 # include "../libft/includes/libftprintf.h"
 
 # define SEM_FILE ".semaphore"
@@ -16,6 +17,8 @@ typedef struct s_data
 	int		eat_ms;
 	int		sleep_ms;
 	int		eat_times;
+	int		pid;
+	t_list	*pid_list;
 	sem_t	*semaphore;
 }	t_data;
 

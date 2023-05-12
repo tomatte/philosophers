@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 17:01:29 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/12 09:31:01 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/12 09:52:17 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ void	fill_data(t_data *data, int argc, char *argv[])
 	data->die_ms = ft_atoi(argv[2]);
 	data->eat_ms = ft_atoi(argv[3]);
 	data->sleep_ms = ft_atoi(argv[4]);
+	data->pid_list = NULL;
+	data->pid = -1;
 	open_semaphore(data);
 	if (argc >= 6)
 		data->eat_times = ft_atoi(argv[5]);
