@@ -5,12 +5,30 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/18 15:34:52 by dbrandao          #+#    #+#             */
-/*   Updated: 2022/07/04 06:32:18 by dbrandao         ###   ########.fr       */
+/*   Created: 2023/05/15 11:31:35 by dbrandao          #+#    #+#             */
+/*   Updated: 2023/05/15 11:45:17 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <philosophers.h>
+
+static char	*ft_strdup(const char *s)
+{
+	char	*dup;
+	int		i;
+
+	dup = (char *) malloc(ft_strlen(s) + 1);
+	if (!dup)
+		return (NULL);
+	i = 0;
+	while (s[i])
+	{
+		dup[i] = s[i];
+		i++;
+	}
+	dup[i] = '\0';
+	return (dup);
+}
 
 static int	decimals_count(int n)
 {
@@ -25,7 +43,7 @@ static int	decimals_count(int n)
 	return (i);
 }
 
-int	powerr(int n, int pwr)
+static int	powerr(int n, int pwr)
 {
 	int	result;
 

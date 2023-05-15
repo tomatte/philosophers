@@ -13,6 +13,10 @@ SRC			=	main.c \
 				routine.c \
 				eat.c \
 				start_guardian.c \
+				aux.c \
+				aux2.c \
+				ft_itoa.c \
+				ft_isnumber.c \
 
 
 INCLUDES	=	-I./includes
@@ -21,16 +25,13 @@ HEADERS		=	./includes/philosophers.h
 
 VPATH		=	./src \
 				./src/list \
+				./src/aux \
 
 OBJS_DIR	=	./objects
 
 OBJS		=	$(patsubst %.c,$(OBJS_DIR)/%.o, $(SRC))
 
 CFLAGS		=	-Wall -Wextra -Werror -pthread -g3
-
-LIBFT_DIR	=	./libft
-
-LIBFT		=	$(LIBFT_DIR)/libftprintf.a
 
 NAME		=	philosophers
 
@@ -46,19 +47,14 @@ $(OBJS_DIR)/%.o:	%.c
 $(OBJS_DIR):
 	mkdir -p $@
 
-$(NAME):	$(OBJS_DIR) $(OBJS) $(LIBFT) $(HEADERS)
-	$(CC) $(OBJS) $(LIBFT) $(CFLAGS) $(INCLUDES) -lreadline -o $@
-
-$(LIBFT):
-	make -C $(LIBFT_DIR) all
+$(NAME):	$(OBJS_DIR) $(OBJS) $(HEADERS)
+	$(CC) $(OBJS) $(CFLAGS) $(INCLUDES) -lreadline -o $@
 
 clean:
 	$(RM) $(OBJS_DIR)
-	make -C $(LIBFT_DIR) clean
 
 fclean:	clean
 	$(RM) $(NAME)
-	make -C $(LIBFT_DIR) fclean
 
 re:	fclean all
 

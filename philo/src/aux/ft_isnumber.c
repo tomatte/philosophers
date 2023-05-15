@@ -5,12 +5,26 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/27 17:43:33 by dbrandao          #+#    #+#             */
-/*   Updated: 2022/12/07 02:32:24 by dbrandao         ###   ########.fr       */
+/*   Created: 2023/05/15 11:46:46 by dbrandao          #+#    #+#             */
+/*   Updated: 2023/05/15 11:48:55 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <philosophers.h>
+
+int	ft_isdigit(int c)
+{
+	if (c > 47 && c < 58)
+		return (1);
+	return (0);
+}
+
+int	ft_issign(char c)
+{
+	if (c == '-' || c == '+')
+		return (1);
+	return (0);
+}
 
 static void	pass_spaces(char **str)
 {

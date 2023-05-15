@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:23:02 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/11 19:12:31 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/15 11:50:11 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include <unistd.h>
 # include <pthread.h>
 # include <sys/time.h>
-# include "../libft/includes/libftprintf.h"
 
 # define MSG_LEN 10000
 
@@ -92,5 +91,21 @@ t_clst	*clst_last(t_clst *lst);
 void	clst_add_back(t_clst **lst, t_clst *node);
 void	clst_clear(t_clst **lst, void (*del)(void *));
 void	clst_iter(t_clst *lst, void (*exec)(t_clst *));
+
+//aux
+void	ft_bzero(void *s, size_t n);
+int		ft_atoi(const char *nptr);
+void	*ft_calloc(size_t nmemb, size_t size);
+size_t	ft_strlen(const char *s);
+size_t	ft_strlcat(char *dst, const char *src, size_t size);
+size_t	ft_strlcpy(char *dst, const char *src, size_t size);
+void	ft_putendl_fd(char *s, int fd);
+void	ft_putstr_fd(char *s, int fd);
+void	ft_putstr(char *s);
+char	*ft_itoa(int n);
+char	*ft_isnumber(char *str);
+int		ft_isdigit(int c);
+int		ft_issign(char c);
+int		ft_isspace(char c);
 
 #endif

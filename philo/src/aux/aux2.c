@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   aux2.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/04 03:59:22 by dbrandao          #+#    #+#             */
-/*   Updated: 2022/07/01 21:06:33 by dbrandao         ###   ########.fr       */
+/*   Created: 2023/05/15 11:36:00 by dbrandao          #+#    #+#             */
+/*   Updated: 2023/05/15 11:40:02 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <philosophers.h>
 
 size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
@@ -33,4 +33,54 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 	if (dst_len >= size)
 		return (size + src_len);
 	return (dst_len + src_len);
+}
+
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
+{
+	size_t	i;
+	int		src_len;
+
+	i = 0;
+	src_len = ft_strlen(src);
+	if (size == 0)
+		return (src_len);
+	while (i < size - 1 && src[i])
+	{
+		dst[i] = ((char *) src)[i];
+		i++;
+	}
+	dst[i] = '\0';
+	return (src_len);
+}
+
+void	ft_putendl_fd(char *s, int fd)
+{
+	int	size;
+
+	if (s == NULL)
+		return ;
+	if (fd < 0)
+		return ;
+	size = sizeof(char) * ft_strlen(s);
+	write(fd, s, size);
+	write(fd, "\n", sizeof(char));
+}
+
+void	ft_putstr_fd(char *s, int fd)
+{
+	int	size;
+
+	if (s == NULL)
+		return ;
+	if (fd < 0)
+		return ;
+	size = sizeof(char) * ft_strlen(s);
+	write(fd, s, size);
+}
+
+void	ft_putstr(char *s)
+{
+	if (!s)
+		return ;
+	write(1, s, ft_strlen(s));
 }
