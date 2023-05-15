@@ -2,6 +2,7 @@ SRC			=	main.c \
 				validation.c \
 				fill_data.c \
 				routine.c \
+				finalize.c \
 
 
 INCLUDES	=	-I./includes

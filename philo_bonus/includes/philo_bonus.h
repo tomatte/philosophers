@@ -29,5 +29,6 @@ void	validation(int argc, char *argv[]);
 void	fill_data(t_data *data, int argc, char *argv[]);
 void	open_semaphore(t_data *data);
 void	routine(t_data *data);
+void	finalize(t_data *data);
 
 #endif
