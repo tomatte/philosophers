@@ -10,6 +10,7 @@
 # include "../libft/includes/libftprintf.h"
 
 # define SEM_FILE "/semaphore1"
+# define SEM_FILE2 "/semaphore2"
 
 typedef struct s_data
 {
@@ -21,6 +22,7 @@ typedef struct s_data
 	pid_t	pid;
 	t_list	*pid_list;
 	sem_t	*semaphore;
+	sem_t	*semaphore2;
 }	t_data;
 
 void	validation(int argc, char *argv[]);
