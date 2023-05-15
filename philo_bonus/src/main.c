@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 08:02:00 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/15 10:55:35 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/15 11:12:18 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,34 @@ static void	wait_childs(t_data *data)
 	}
 }
 
+static void	open_parent_semaphore(t_data *data)
+{
+	sem_t	*sem1;
+	sem_t	*sem2;
+
+	sem1 = sem_open(SEM_FILE, O_CREAT | O_EXCL, 0644, data->philo_qty);
+	sem2 = sem_open(SEM_FILE2, O_CREAT | O_EXCL, 0644, data->philo_qty / 2);
+	if (sem1 == SEM_FAILED)
+	{
+		sem_unlink(SEM_FILE);
+		sem1 = sem_open(SEM_FILE, O_CREAT | O_EXCL, 0644, data->philo_qty);
+	}
+	if (sem2 == SEM_FAILED)
+	{
+		sem_unlink(SEM_FILE2);
+		sem2 = sem_open(SEM_FILE2, 0300, 0644, data->philo_qty / 2);
+	}
+	data->semaphore = sem1;
+	data->semaphore2 = sem2;
+}
+
 int	main(int argc, char *argv[])
 {
 	t_data	data;
 
 	validation(argc, argv);
 	fill_data(&data, argc, argv);
+	open_parent_semaphore(&data);
 	create_childs(&data);
 	open_child_semaphore(&data);
 	routine(&data);
