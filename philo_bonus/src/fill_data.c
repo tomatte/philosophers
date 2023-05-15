@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 17:01:29 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/12 09:52:17 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/15 10:37:41 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@ void	open_semaphore(t_data *data)
 {
 	sem_t	*semaphore;
 
-	semaphore = sem_open(SEM_FILE, O_CREAT | O_EXCL, 644, data->philo_qty);
+	semaphore = sem_open(SEM_FILE, O_CREAT, 0644, data->philo_qty);
+	if (semaphore == SEM_FAILED)
+		ft_putstr("sem failed to open\n");
 	data->semaphore = semaphore;
 }
 

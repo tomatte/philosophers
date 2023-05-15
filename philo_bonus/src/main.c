@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 08:02:00 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/12 10:18:31 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/15 09:56:29 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ int	main(int argc, char *argv[])
 	wait_childs(&data);
 	sem_close(data.semaphore);
 	ft_putstr("closed semaphore\n");
+	sem_unlink(SEM_FILE);
 	ft_lstclear(&data.pid_list, free);
 	return 0;
 }

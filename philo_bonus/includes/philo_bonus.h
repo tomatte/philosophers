@@ -6,9 +6,10 @@
 # include <semaphore.h>
 # include <fcntl.h>
 # include <sys/wait.h>
+# include <sys/stat.h>
 # include "../libft/includes/libftprintf.h"
 
-# define SEM_FILE ".semaphore"
+# define SEM_FILE "/semaphore1"
 
 typedef struct s_data
 {
