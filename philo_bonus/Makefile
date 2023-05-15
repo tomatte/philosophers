@@ -3,6 +3,15 @@ SRC			=	main.c \
 				fill_data.c \
 				routine.c \
 				finalize.c \
+				aux.c \
+				aux2.c \
+				aux3.c \
+				ft_lstadd_back.c \
+				ft_lstclear.c \
+				ft_lstdelone.c \
+				ft_lstlast.c \
+				ft_lstnew.c \
+				ft_lstsize.c \
 
 
 INCLUDES	=	-I./includes
@@ -10,16 +19,14 @@ INCLUDES	=	-I./includes
 HEADERS		=	./includes/philo_bonus.h
 
 VPATH		=	./src \
+				./src/aux \
+				./src/lst \
 
 OBJS_DIR	=	./objects
 
 OBJS		=	$(patsubst %.c,$(OBJS_DIR)/%.o, $(SRC))
 
 CFLAGS		=	-Wall -Wextra -pthread -g3 ##-Werror removeeeeeeeeeeeeeeeeed!!!!!!!!!!!!!
-
-LIBFT_DIR	=	./libft
-
-LIBFT		=	$(LIBFT_DIR)/libftprintf.a
 
 NAME		=	philo_bonus
 
@@ -35,19 +42,14 @@ $(OBJS_DIR)/%.o:	%.c
 $(OBJS_DIR):
 	mkdir -p $@
 
-$(NAME):	$(OBJS_DIR) $(OBJS) $(LIBFT) $(HEADERS)
-	$(CC) $(OBJS) $(LIBFT) $(CFLAGS) $(INCLUDES) -lreadline -o $@
-
-$(LIBFT):
-	make -C $(LIBFT_DIR) all
+$(NAME):	$(OBJS_DIR) $(OBJS) $(HEADERS)
+	$(CC) $(OBJS) $(CFLAGS) $(INCLUDES) -lreadline -o $@
 
 clean:
 	$(RM) $(OBJS_DIR)
-	make -C $(LIBFT_DIR) clean
 
 fclean:	clean
 	$(RM) $(NAME)
-	make -C $(LIBFT_DIR) fclean
 
 re:	fclean all
 

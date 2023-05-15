@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   philo_bonus.h                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/05/15 14:47:21 by dbrandao          #+#    #+#             */
+/*   Updated: 2023/05/15 14:54:16 by dbrandao         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PHILO_BONUS_H
 # define PHILO_BONUS_H
 
@@ -7,10 +19,15 @@
 # include <fcntl.h>
 # include <sys/wait.h>
 # include <sys/stat.h>
-# include "../libft/includes/libftprintf.h"
 
 # define SEM_FILE "/semaphore1"
 # define SEM_FILE2 "/semaphore2"
+
+typedef struct s_list
+{
+	void			*content;
+	struct s_list	*next;
+}					t_list;
 
 typedef struct s_data
 {
@@ -30,5 +47,31 @@ void	fill_data(t_data *data, int argc, char *argv[]);
 void	open_semaphore(t_data *data);
 void	routine(t_data *data);
 void	finalize(t_data *data);
+
+//aux
+void	ft_bzero(void *s, size_t n);
+int		ft_atoi(const char *nptr);
+void	*ft_calloc(size_t nmemb, size_t size);
+size_t	ft_strlen(const char *s);
+size_t	ft_strlcat(char *dst, const char *src, size_t size);
+size_t	ft_strlcpy(char *dst, const char *src, size_t size);
+void	ft_putendl_fd(char *s, int fd);
+void	ft_putstr_fd(char *s, int fd);
+void	ft_putstr(char *s);
+char	*ft_itoa(int n);
+char	*ft_isnumber(char *str);
+int		ft_isdigit(int c);
+int		ft_issign(char c);
+int		ft_isspace(char c);
+char	*ft_isnumber(char *str);
+void	*ft_calloc(size_t nmemb, size_t size);
+
+//lst
+void	ft_lstadd_back(t_list **lst, t_list *new);
+void	ft_lstclear(t_list **lst, void (*del)(void *));
+void	ft_lstdelone(t_list *lst, void (*del)(void *));
+t_list	*ft_lstlast(t_list *lst);
+t_list	*ft_lstnew(void *content);
+int		ft_lstsize(t_list *lst);
 
 #endif
