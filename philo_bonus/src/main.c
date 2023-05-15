@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 08:02:00 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/15 14:31:02 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/15 15:43:36 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,6 @@ static void	create_childs(t_data *data)
 		pid = ft_calloc(1, sizeof(pid_t));
 		*pid = data->pid;
 		ft_lstadd_back(&data->pid_list, ft_lstnew(pid));
-	}
-}
-
-static void	open_child_semaphore(t_data *data)
-{
-	if (data->pid == 0)
-	{
-		open_semaphore(data);
-		ft_putstr("opened child semaphore\n");
 	}
 }
 
@@ -75,7 +66,6 @@ int	main(int argc, char *argv[])
 	fill_data(&data, argc, argv);
 	open_parent_semaphore(&data);
 	create_childs(&data);
-	open_child_semaphore(&data);
 	routine(&data);
 	wait_childs(&data);
 	finalize(&data);
