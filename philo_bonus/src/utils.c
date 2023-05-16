@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 09:16:02 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/16 15:05:38 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/16 15:15:49 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,9 +80,14 @@ int	is_dead2(t_data *data)
 
 void	kill_childs(t_data *data)
 {
-	t_list	*pid_list;
-	pid_t	*pid;
+	static int	executed = 0;
+	t_list		*pid_list;
+	pid_t		*pid;
 
+	if (executed == 0)
+		executed = 1;
+	else
+		return ;
 	pid_list = data->pid_list;
 	while (pid_list)
 	{
