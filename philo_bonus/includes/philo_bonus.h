@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 14:47:21 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/16 09:28:17 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/16 09:42:29 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <fcntl.h>
 # include <sys/wait.h>
 # include <sys/stat.h>
+# include <sys/time.h>
 
 # define SEM_FILE "/semaphore1"
 # define SEM_FILE2 "/semaphore2"
@@ -34,7 +35,6 @@ typedef struct s_philo
 {
 	int				num;
 	int				dead;
-	pthread_t		t;
 	struct timeval	start;
 	struct timeval	end;
 	int				last_ms;
@@ -88,5 +88,6 @@ int		ft_lstsize(t_list *lst);
 
 //utils
 void	print_msg(int ms, int num, char *act);
+int		get_ms(t_philo *philo);
 
 #endif

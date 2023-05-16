@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 09:16:02 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/16 09:30:47 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/16 09:41:46 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,17 @@ void	print_msg(int ms, int num, char *act)
 	ft_putstr(msg);
 	free(ms_str);
 	free(num_str);
+}
+
+int	get_ms(t_philo *philo)
+{
+	int	seconds;
+	int	microseconds;
+	int	ms;
+
+	gettimeofday(&philo->end, NULL);
+	seconds = (philo->end.tv_sec - philo->start.tv_sec);
+	microseconds = (philo->end.tv_usec - philo->start.tv_usec);
+	ms = seconds * 1000 + microseconds / 1000;
+	return (ms);
 }
