@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 08:02:00 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/16 09:33:30 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/16 10:17:31 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int	main(int argc, char *argv[])
 	fill_data(&data, argc, argv);
 	open_parent_semaphore(&data);
 	create_childs(&data);
-	routine(&data);
+	exec_routine(&data);
 	wait_childs(&data);
 	finalize(&data);
 	return 0;

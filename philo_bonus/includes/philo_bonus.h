@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 14:47:21 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/16 10:01:56 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/16 10:20:02 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <sys/wait.h>
 # include <sys/stat.h>
 # include <sys/time.h>
+# include <pthread.h>
 
 # define SEM_FILE "/semaphore1"
 # define SEM_FILE2 "/semaphore2"
@@ -60,6 +61,7 @@ void	open_semaphore(t_data *data);
 void	routine(t_data *data);
 void	finalize(t_data *data);
 void	philo_eat(t_data *data);
+void	exec_routine(t_data *data);
 
 //aux
 void	ft_bzero(void *s, size_t n);

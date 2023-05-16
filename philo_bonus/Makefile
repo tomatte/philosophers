@@ -15,6 +15,7 @@ SRC			=	main.c \
 				ft_lstsize.c \
 				utils.c \
 				philo_eat.c \
+				exec_routine.c \
 
 
 INCLUDES	=	-I./includes
