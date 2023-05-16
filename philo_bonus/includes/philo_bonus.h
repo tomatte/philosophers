@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 14:47:21 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/16 09:42:29 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/16 09:47:41 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ void	fill_data(t_data *data, int argc, char *argv[]);
 void	open_semaphore(t_data *data);
 void	routine(t_data *data);
 void	finalize(t_data *data);
+void	philo_eat(t_data *data);
 
 //aux
 void	ft_bzero(void *s, size_t n);
