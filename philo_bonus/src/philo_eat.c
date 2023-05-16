@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 09:47:17 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/16 09:47:33 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/16 09:59:07 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ static void	eat(t_data *data)
 	int	ms;
 
 	ms = get_ms(&data->philo);
+	data->philo.last_ms = ms;
 	print_msg(ms, data->philo.num, " is eating\n");
 	usleep(data->eat_ms * 1000);
 }

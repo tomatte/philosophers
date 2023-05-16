@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 09:16:02 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/16 09:41:46 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/16 10:03:14 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,19 @@ int	get_ms(t_philo *philo)
 	microseconds = (philo->end.tv_usec - philo->start.tv_usec);
 	ms = seconds * 1000 + microseconds / 1000;
 	return (ms);
+}
+
+int	is_dead(t_data *data)
+{
+	int	ms;
+	int	philo_ms;
+
+	ms = get_ms(&data->philo);
+	philo_ms = ms - data->philo.last_ms;
+	if (philo_ms >= data->die_ms)
+	{
+		print_msg(ms, data->philo.num, " died\n");
+		return (1);
+	}
+	return (0);
 }
