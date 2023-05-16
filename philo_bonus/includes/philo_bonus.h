@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 14:47:21 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/16 11:27:11 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/16 11:35:51 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ typedef struct s_data
 	pthread_mutex_t	start_mutex;
 	int				*dead;
 	pthread_mutex_t	dead_mutex;
+	pthread_mutex_t	lastms_mutex;
 }	t_data;
 
 void	validation(int argc, char *argv[]);
