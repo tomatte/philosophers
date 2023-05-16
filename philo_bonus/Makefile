@@ -16,6 +16,7 @@ SRC			=	main.c \
 				utils.c \
 				philo_eat.c \
 				exec_routine.c \
+				start_guardian.c \
 
 
 INCLUDES	=	-I./includes

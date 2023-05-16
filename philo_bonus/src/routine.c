@@ -6,11 +6,18 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 10:17:04 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/16 10:18:24 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/16 11:01:21 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philo_bonus.h>
+
+static void	philo_started(t_data *data)
+{
+	pthread_mutex_lock(&data->start_mutex);
+	data->started = 1;
+	pthread_mutex_unlock(&data->start_mutex);
+}
 
 static void	philo_sleep(t_data *data)
 {
@@ -33,6 +40,7 @@ void	routine(t_data *data)
 {
 	int	i;
 
+	philo_started(data);
 	gettimeofday(&data->philo.start, NULL);
 	i = 0;
 	while (data->eat_times == -1 || i++ < data->eat_times)

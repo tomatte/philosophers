@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 14:47:21 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/16 10:20:02 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/16 10:58:42 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ typedef struct s_list
 typedef struct s_philo
 {
 	int				num;
-	int				dead;
+	int				*dead;
 	struct timeval	start;
 	struct timeval	end;
 	int				last_ms;
@@ -43,16 +43,18 @@ typedef struct s_philo
 
 typedef struct s_data
 {
-	int		philo_qty;
-	int		die_ms;
-	int		eat_ms;
-	int		sleep_ms;
-	int		eat_times;
-	pid_t	pid;
-	t_list	*pid_list;
-	sem_t	*semaphore;
-	sem_t	*semaphore2;
-	t_philo	philo;
+	int				philo_qty;
+	int				die_ms;
+	int				eat_ms;
+	int				sleep_ms;
+	int				eat_times;
+	pid_t			pid;
+	t_list			*pid_list;
+	sem_t			*semaphore;
+	sem_t			*semaphore2;
+	t_philo			philo;
+	int				started;
+	pthread_mutex_t	start_mutex;
 }	t_data;
 
 void	validation(int argc, char *argv[]);
@@ -62,6 +64,7 @@ void	routine(t_data *data);
 void	finalize(t_data *data);
 void	philo_eat(t_data *data);
 void	exec_routine(t_data *data);
+void	*start_guardian(void *vdata);
 
 //aux
 void	ft_bzero(void *s, size_t n);

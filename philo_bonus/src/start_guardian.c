@@ -1,33 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exec_routine.c                                     :+:      :+:    :+:   */
+/*   start_guardian.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/16 10:15:34 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/16 10:58:08 by dbrandao         ###   ########.fr       */
+/*   Created: 2023/05/16 10:34:53 by dbrandao          #+#    #+#             */
+/*   Updated: 2023/05/16 11:01:05 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philo_bonus.h>
 
-static void	*start_routine(void *vdata)
+static void	wait_routine(t_data *data)
 {
-	routine((t_data *) vdata);
-	return (NULL);
+	while (1)
+	{
+		pthread_mutex_lock(&data->start_mutex);
+		if (data->started)
+		{
+			pthread_mutex_unlock(&data->start_mutex);
+			return ;
+		}
+		pthread_mutex_unlock(&data->start_mutex);
+		usleep(70);
+	}
 }
 
-void	exec_routine(t_data *data)
+void	*start_guardian(void *vdata)
 {
-	pthread_t	t;
-	pthread_t	guardian;
+	t_data	*data;
 
-	if (data->pid != 0)
-		return ;
-	pthread_mutex_init(&data->start_mutex, NULL);
-	pthread_create(&guardian, NULL, &start_guardian, (void *) data);
-	pthread_create(&t, NULL, &start_routine, (void *) data);
-	pthread_join(t, NULL);
-	pthread_join(guardian, NULL);
+	data = vdata;
+	if (data->eat_times == 0)
+		return (NULL);
+	wait_routine(data);
+	return (NULL);
 }
