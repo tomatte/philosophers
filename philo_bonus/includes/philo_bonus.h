@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 14:47:21 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/16 11:14:47 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/16 11:27:11 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ t_list	*ft_lstnew(void *content);
 int		ft_lstsize(t_list *lst);
 
 //utils
-void	print_msg(int ms, int num, char *act);
+void	print_msg(int ms, int num, char *act, t_data *data);
 int		get_ms(t_philo *philo);
 int		is_dead(t_data *data);
 int		is_dead2(t_data *data);

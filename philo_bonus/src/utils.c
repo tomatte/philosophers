@@ -6,18 +6,20 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 09:16:02 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/16 11:15:35 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/16 11:27:32 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philo_bonus.h>
 
-void	print_msg(int ms, int num, char *act)
+void	print_msg(int ms, int num, char *act, t_data *data)
 {
 	char	msg[MSG_LEN];
 	char	*ms_str;
 	char	*num_str;
 
+	if (is_dead2(data))
+		return ;
 	ms_str = ft_itoa(ms);
 	num_str = ft_itoa(num);
 	ft_strlcpy(msg, ms_str, MSG_LEN);
@@ -51,7 +53,7 @@ int	is_dead(t_data *data)
 	philo_ms = ms - data->philo.last_ms;
 	if (philo_ms >= data->die_ms)
 	{
-		print_msg(ms, data->philo.num, " died\n");
+		print_msg(ms, data->philo.num, " died\n", data);
 		return (1);
 	}
 	return (0);
