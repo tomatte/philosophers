@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 10:17:04 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/15 10:58:05 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/16 09:30:11 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,29 +16,28 @@ static void	take_forks(t_data *data)
 {
 	sem_wait(data->semaphore2);
 	sem_wait(data->semaphore);
-	ft_putstr("took fork\n");
+	print_msg(43, data->philo.num, " has taken a fork\n");
 	sem_wait(data->semaphore);
-	ft_putstr("took fork\n");
+	print_msg(43, data->philo.num, " has taken a fork\n");
 }
 
 static void	put_forks_back(t_data *data)
 {
-	ft_putstr("sem post\n");
 	sem_post(data->semaphore);
 	sem_post(data->semaphore);
 	sem_post(data->semaphore2);
 }
 
-static void	eat(int ms)
+static void	eat(t_data *data)
 {
-	ft_putstr("eating\n");
-	usleep(ms * 1000);
+	print_msg(43, data->philo.num, " is eating\n");
+	usleep(data->eat_ms * 1000);
 }
 
 static void	philo_eat(t_data *data)
 {
 	take_forks(data);
-	eat(data->eat_ms);
+	eat(data);
 	put_forks_back(data);
 }
 
@@ -47,7 +46,7 @@ void	routine(t_data *data)
 	int	i;
 
 	if (data->pid != 0)
-		return (ft_putstr("parent returns from routine\n"));
+		return ;
 	i = 0;
 	while (data->eat_times == -1 || i++ < data->eat_times)
 	{

@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 14:47:21 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/15 14:54:16 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/16 09:28:17 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,23 @@
 
 # define SEM_FILE "/semaphore1"
 # define SEM_FILE2 "/semaphore2"
+# define MSG_LEN 10000
 
 typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
 }					t_list;
+
+typedef struct s_philo
+{
+	int				num;
+	int				dead;
+	pthread_t		t;
+	struct timeval	start;
+	struct timeval	end;
+	int				last_ms;
+}	t_philo;
 
 typedef struct s_data
 {
@@ -40,6 +51,7 @@ typedef struct s_data
 	t_list	*pid_list;
 	sem_t	*semaphore;
 	sem_t	*semaphore2;
+	t_philo	philo;
 }	t_data;
 
 void	validation(int argc, char *argv[]);
@@ -73,5 +85,8 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *));
 t_list	*ft_lstlast(t_list *lst);
 t_list	*ft_lstnew(void *content);
 int		ft_lstsize(t_list *lst);
+
+//utils
+void	print_msg(int ms, int num, char *act);
 
 #endif

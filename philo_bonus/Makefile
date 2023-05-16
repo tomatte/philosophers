@@ -6,12 +6,14 @@ SRC			=	main.c \
 				aux.c \
 				aux2.c \
 				aux3.c \
+				ft_itoa.c \
 				ft_lstadd_back.c \
 				ft_lstclear.c \
 				ft_lstdelone.c \
 				ft_lstlast.c \
 				ft_lstnew.c \
 				ft_lstsize.c \
+				utils.c \
 
 
 INCLUDES	=	-I./includes

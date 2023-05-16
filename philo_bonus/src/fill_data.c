@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 17:01:29 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/15 11:11:43 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/16 09:25:13 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	fill_data(t_data *data, int argc, char *argv[])
 	data->sleep_ms = ft_atoi(argv[4]);
 	data->pid_list = NULL;
 	data->pid = -1;
+	ft_bzero(&data->philo, sizeof(t_philo));
 	if (argc >= 6)
 		data->eat_times = ft_atoi(argv[5]);
 	else

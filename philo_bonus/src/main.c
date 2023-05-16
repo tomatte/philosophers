@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 08:02:00 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/15 15:43:36 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/16 09:33:30 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ static void	create_childs(t_data *data)
 	while (i++ < data->philo_qty)
 	{
 		data->pid = fork();
+		data->philo.num = i;
 		if (data->pid == 0)
 			return ;
 		pid = ft_calloc(1, sizeof(pid_t));
