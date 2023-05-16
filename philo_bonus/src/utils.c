@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 09:16:02 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/16 10:03:14 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/16 11:15:35 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,16 @@ int	is_dead(t_data *data)
 		return (1);
 	}
 	return (0);
+}
+
+int	is_dead2(t_data *data)
+{
+	int	dead;
+
+	dead = 0;
+	pthread_mutex_lock(&data->dead_mutex);
+	if (*(data->dead))
+		dead = 1;
+	pthread_mutex_unlock(&data->dead_mutex);
+	return (dead);
 }

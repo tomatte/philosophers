@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 10:17:04 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/16 11:01:21 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/16 11:18:10 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,13 @@ void	routine(t_data *data)
 {
 	int	i;
 
-	philo_started(data);
 	gettimeofday(&data->philo.start, NULL);
+	philo_started(data);
 	i = 0;
 	while (data->eat_times == -1 || i++ < data->eat_times)
 	{
-		if (is_dead(data))
-			return ;
+		if (is_dead2(data))
+			return (ft_putstr("philo exited\n"));
 		philo_eat(data);
 		philo_sleep(data);
 		philo_think(data);

@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 14:47:21 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/16 10:58:42 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/16 11:14:47 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ typedef struct s_data
 	t_philo			philo;
 	int				started;
 	pthread_mutex_t	start_mutex;
+	int				*dead;
+	pthread_mutex_t	dead_mutex;
 }	t_data;
 
 void	validation(int argc, char *argv[]);
@@ -96,5 +98,6 @@ int		ft_lstsize(t_list *lst);
 void	print_msg(int ms, int num, char *act);
 int		get_ms(t_philo *philo);
 int		is_dead(t_data *data);
+int		is_dead2(t_data *data);
 
 #endif
