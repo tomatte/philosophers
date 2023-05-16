@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 14:47:21 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/16 11:35:51 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/16 15:06:13 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <sys/stat.h>
 # include <sys/time.h>
 # include <pthread.h>
+# include <signal.h>
 
 # define SEM_FILE "/semaphore1"
 # define SEM_FILE2 "/semaphore2"
@@ -100,5 +101,6 @@ void	print_msg(int ms, int num, char *act, t_data *data);
 int		get_ms(t_philo *philo);
 int		is_dead(t_data *data);
 int		is_dead2(t_data *data);
+void	kill_childs(t_data *data);
 
 #endif

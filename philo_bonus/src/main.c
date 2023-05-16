@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 08:02:00 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/16 10:17:31 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/16 15:07:37 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,17 +32,21 @@ static void	create_childs(t_data *data)
 
 static void	wait_childs(t_data *data)
 {
-	t_list	*pid_list;
-	pid_t	*pid;
+	int	aux;
+	int	stat;
 
 	if (data->pid == 0)
 		return ;
-	pid_list = data->pid_list;
-	while (pid_list)
+	stat = 0;
+	aux = 0;
+	while (aux != -1)
 	{
-		pid = pid_list->content;
-		waitpid(*pid, NULL, WUNTRACED);
-		pid_list = pid_list->next;
+		aux = waitpid(-1, &stat, WUNTRACED);
+		if (stat == 256)
+		{
+			kill_childs(data);
+			break ;
+		}
 	}
 }
 
