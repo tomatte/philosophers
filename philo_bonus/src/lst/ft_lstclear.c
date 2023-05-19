@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 18:49:23 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/15 14:51:54 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/16 15:18:34 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,5 @@ void	ft_lstclear(t_list **lst, void (*del)(void *))
 		ft_lstdelone(*lst, del);
 		*lst = aux;
 	}
-	lst = NULL;
+	*lst = NULL;
 }

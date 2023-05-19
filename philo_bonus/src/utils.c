@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 09:16:02 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/16 15:15:49 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/19 00:24:58 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ void	kill_childs(t_data *data)
 	while (pid_list)
 	{
 		pid = pid_list->content;
-		kill(*pid, SIGTERM);
+		kill(*pid, SIGKILL);
 		pid_list = pid_list->next;
 	}
 }

@@ -48,7 +48,7 @@ $(OBJS_DIR):
 	mkdir -p $@
 
 $(NAME):	$(OBJS_DIR) $(OBJS) $(HEADERS)
-	$(CC) $(OBJS) $(CFLAGS) $(INCLUDES) -lreadline -o $@
+	$(CC) $(OBJS) $(CFLAGS) $(INCLUDES) -o $@
 
 clean:
 	$(RM) $(OBJS_DIR)
