@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 10:15:34 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/19 01:31:06 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/20 11:05:59 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@ static void	*start_routine(void *vdata)
 
 void	exec_routine(t_data *data)
 {
-	pthread_t	t;
-	pthread_t	guardian;
 	static int	dead;
 
 	if (data->pid != 0)
@@ -29,10 +27,5 @@ void	exec_routine(t_data *data)
 	ft_lstclear(&data->pid_list, free);
 	dead = 0;
 	data->dead = &dead;
-	pthread_mutex_init(&data->start_mutex, NULL);
-	pthread_mutex_init(&data->lastms_mutex, NULL);
-	pthread_create(&guardian, NULL, &start_guardian, (void *) data);
-	pthread_create(&t, NULL, &start_routine, (void *) data);
-	pthread_join(guardian, NULL);
-	pthread_join(t, NULL);
+	routine(data);
 }

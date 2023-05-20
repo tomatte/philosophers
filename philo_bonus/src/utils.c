@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 09:16:02 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/19 00:24:58 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/20 11:16:19 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	print_msg(int ms, int num, char *act, t_data *data)
 	char	*ms_str;
 	char	*num_str;
 
-	if (is_dead2(data))
+	if (is_dead(data))
 		return ;
 	ms_str = ft_itoa(ms);
 	num_str = ft_itoa(num);
@@ -49,33 +49,33 @@ int	is_dead(t_data *data)
 	int	ms;
 	int	philo_ms;
 
+	if (*(data->dead))
+		return (1);
 	ms = get_ms(&data->philo);
-	pthread_mutex_lock(&data->lastms_mutex);
 	philo_ms = ms - data->philo.last_ms;
-	pthread_mutex_unlock(&data->lastms_mutex);
 	if (philo_ms >= data->die_ms)
 	{
-		print_msg(ms, data->philo.num, " died\n", data);
-		return (1);
+		*(data->dead) = 1;
+		printf("%d %d died\n", ms, data->philo.num);
+		exit(1);
 	}
 	return (0);
 }
 
-int	is_dead2(t_data *data)
+void	to_sleep(int ms, t_data *data)
 {
-	int	dead;
+	int	i;
 
-	dead = 0;
-	pthread_mutex_lock(&data->dead_mutex);
-	if (*(data->dead))
-		dead = 1;
-	pthread_mutex_unlock(&data->dead_mutex);
-	if (dead)
+	i = 0;
+	while (i++ < ms)
 	{
-		finalize(data);
-		exit(1);
+		usleep(1000);
+		if (is_dead(data))
+		{
+			printf("oi\n");
+			return ;
+		}
 	}
-	return (dead);
 }
 
 void	kill_childs(t_data *data)
