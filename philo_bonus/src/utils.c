@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 09:16:02 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/20 11:16:19 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/20 11:29:18 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,9 @@
 
 void	print_msg(int ms, int num, char *act, t_data *data)
 {
-	char	msg[MSG_LEN];
-	char	*ms_str;
-	char	*num_str;
-
 	if (is_dead(data))
 		return ;
-	ms_str = ft_itoa(ms);
-	num_str = ft_itoa(num);
-	ft_strlcpy(msg, ms_str, MSG_LEN);
-	ft_strlcat(msg, " ", MSG_LEN);
-	ft_strlcat(msg, num_str, MSG_LEN);
-	ft_strlcat(msg, act, MSG_LEN);
-	ft_putstr(msg);
-	free(ms_str);
-	free(num_str);
+	printf("%d %d%s", ms, num, act);
 }
 
 int	get_ms(t_philo *philo)
