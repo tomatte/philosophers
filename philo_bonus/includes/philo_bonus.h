@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 14:47:21 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/20 10:58:17 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/20 11:56:23 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,11 +55,7 @@ typedef struct s_data
 	sem_t			*semaphore;
 	sem_t			*semaphore2;
 	t_philo			philo;
-	int				started;
-	pthread_mutex_t	start_mutex;
 	int				*dead;
-	pthread_mutex_t	dead_mutex;
-	pthread_mutex_t	lastms_mutex;
 }	t_data;
 
 void	validation(int argc, char *argv[]);
@@ -69,7 +65,6 @@ void	routine(t_data *data);
 void	finalize(t_data *data);
 void	philo_eat(t_data *data);
 void	exec_routine(t_data *data);
-void	*start_guardian(void *vdata);
 
 //aux
 void	ft_bzero(void *s, size_t n);
@@ -101,7 +96,6 @@ int		ft_lstsize(t_list *lst);
 void	print_msg(int ms, int num, char *act, t_data *data);
 int		get_ms(t_philo *philo);
 int		is_dead(t_data *data);
-int		is_dead2(t_data *data);
 void	kill_childs(t_data *data);
 void	to_sleep(int ms, t_data *data);
 

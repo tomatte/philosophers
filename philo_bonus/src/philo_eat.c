@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 09:47:17 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/20 11:09:42 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/20 11:55:51 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,7 @@ static void	eat(t_data *data)
 	if (is_dead(data))
 		return ;
 	ms = get_ms(&data->philo);
-	pthread_mutex_lock(&data->lastms_mutex);
 	data->philo.last_ms = ms;
-	pthread_mutex_unlock(&data->lastms_mutex);
 	print_msg(ms, data->philo.num, " is eating\n", data);
 	to_sleep(data->eat_ms, data);
 }
