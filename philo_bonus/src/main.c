@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 08:02:00 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/16 15:16:19 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/23 10:29:48 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,5 +71,5 @@ int	main(int argc, char *argv[])
 	exec_routine(&data);
 	wait_childs(&data);
 	finalize(&data);
-	return 0;
+	return (0);
 }

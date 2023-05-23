@@ -6,22 +6,26 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 10:15:34 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/16 17:31:53 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/20 12:23:20 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philo_bonus.h>
 
-static void	*start_routine(void *vdata)
+static void	take_fork(t_data *data)
 {
-	routine((t_data *) vdata);
-	return (NULL);
+	int		ms;
+
+	gettimeofday(&data->philo.start, NULL);
+	sem_wait(data->semaphore);
+	ms = get_ms(&data->philo);
+	print_msg(ms, data->philo.num, " has taken a fork\n", data);
+	while (1)
+		to_sleep(1000, data);
 }
 
 void	exec_routine(t_data *data)
 {
-	pthread_t	t;
-	pthread_t	guardian;
 	static int	dead;
 
 	if (data->pid != 0)
@@ -29,10 +33,8 @@ void	exec_routine(t_data *data)
 	ft_lstclear(&data->pid_list, free);
 	dead = 0;
 	data->dead = &dead;
-	pthread_mutex_init(&data->start_mutex, NULL);
-	pthread_mutex_init(&data->lastms_mutex, NULL);
-	pthread_create(&guardian, NULL, &start_guardian, (void *) data);
-	pthread_create(&t, NULL, &start_routine, (void *) data);
-	pthread_join(t, NULL);
-	pthread_join(guardian, NULL);
+	if (data->philo_qty > 1)
+		routine(data);
+	else
+		take_fork(data);
 }

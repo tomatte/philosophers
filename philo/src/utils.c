@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 21:45:14 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/11 18:04:31 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/23 10:35:04 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,19 +78,7 @@ int	is_dead(t_clst *node)
 
 void	print_msg(int ms, int num, char *act, t_philo *philo)
 {
-	char	msg[MSG_LEN];
-	char	*ms_str;
-	char	*num_str;
-
 	if (is_dead3(philo))
 		return ;
-	ms_str = ft_itoa(ms);
-	num_str = ft_itoa(num);
-	ft_strlcpy(msg, ms_str, MSG_LEN);
-	ft_strlcat(msg, " ", MSG_LEN);
-	ft_strlcat(msg, num_str, MSG_LEN);
-	ft_strlcat(msg, act, MSG_LEN);
-	ft_putstr(msg);
-	free(ms_str);
-	free(num_str);
+	printf("%d %d%s", ms, num, act);
 }
