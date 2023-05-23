@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 09:16:02 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/20 12:25:01 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/23 10:27:10 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,17 +53,21 @@ int	is_dead(t_data *data)
 
 void	to_sleep(int ms, t_data *data)
 {
-	int	i;
+	int	rate;
 
-	i = 0;
-	while (i++ < ms)
+	rate = 4;
+	while (ms >= rate)
+	{
+		usleep(1000 * rate);
+		if (is_dead(data))
+			return ;
+		ms -= rate;
+	}
+	while (ms--)
 	{
 		usleep(1000);
 		if (is_dead(data))
-		{
-			printf("oi\n");
 			return ;
-		}
 	}
 }
 
