@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 08:53:36 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/11 16:27:24 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/31 17:47:20 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,13 @@ int	is_dead3(t_philo *philo)
 	return (dead);
 }
 
+static void	philo_ended(t_philo *philo)
+{
+	pthread_mutex_lock(&philo->ended_mutex);
+	philo->ended = 1;
+	pthread_mutex_unlock(&philo->ended_mutex);
+}
+
 void	*routine(void *vnode)
 {
 	t_clst	*node;
@@ -68,7 +75,8 @@ void	*routine(void *vnode)
 		philo_sleep(node);
 		philo_think(node);
 		if (is_dead3(philo))
-			break ;
+			return (NULL);
 	}
+	philo_ended(philo);
 	return (NULL);
 }

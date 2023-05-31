@@ -6,11 +6,21 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 13:51:26 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/11 19:45:14 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/31 17:51:55 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philosophers.h>
+
+static int	ended(t_philo *philo)
+{
+	int	ended;
+
+	pthread_mutex_lock(&philo->ended_mutex);
+	ended = philo->ended;
+	pthread_mutex_unlock(&philo->ended_mutex);
+	return (ended);
+}
 
 static void	*guard_threads(void *vphilos)
 {
@@ -32,7 +42,7 @@ static void	*guard_threads(void *vphilos)
 	pthread_mutex_unlock(&philo->start_mutex);
 	while (1)
 	{
-		if (is_dead(philos))
+		if (ended(philo) || is_dead(philos))
 			break ;
 		philos = philos->next;
 		usleep(100);

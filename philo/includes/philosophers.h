@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:23:02 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/05/23 10:33:41 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/05/31 17:39:36 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ typedef struct s_philo
 	struct timeval	end;
 	int				started;
 	int				last_ms;
+	int				ended;
+	pthread_mutex_t	ended_mutex;
 	pthread_mutex_t	*dead_mutex;
 	pthread_mutex_t	lastms_mutex;
 	pthread_mutex_t	getms_mutex;
