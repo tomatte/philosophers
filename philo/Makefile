@@ -17,6 +17,7 @@ SRC			=	main.c \
 				aux2.c \
 				ft_itoa.c \
 				ft_isnumber.c \
+				clst_size.c \
 
 
 INCLUDES	=	-I./includes

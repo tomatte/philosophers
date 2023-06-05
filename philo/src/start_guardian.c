@@ -6,18 +6,11 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 13:51:26 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/06/05 10:09:33 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/06/05 15:09:42 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philosophers.h>
-
-static int	clst_size(t_clst *lst)
-{
-	while (lst->index != 0)
-		lst = lst->prev;
-	return (lst->prev->index + 1);
-}
 
 static int	ended_philo(t_philo *philo)
 {
@@ -50,6 +43,18 @@ static int	ended_all(t_clst *lst)
 	return (0);
 }
 
+static int	philo_started(t_clst *node)
+{
+	t_philo	*philo;
+	int		started;
+
+	philo = p(node);
+	pthread_mutex_lock(&philo->start_mutex);
+	started = philo->started;
+	pthread_mutex_unlock(&philo->start_mutex);
+	return (started);
+}
+
 static void	*guard_threads(void *vphilos)
 {
 	t_clst	*philos;
@@ -61,18 +66,11 @@ static void	*guard_threads(void *vphilos)
 		return (NULL);
 	while (1)
 	{
-		pthread_mutex_lock(&philo->start_mutex);
-		if (philo->started)
-			break ;
-		pthread_mutex_unlock(&philo->start_mutex);
-		usleep(50);
-	}
-	pthread_mutex_unlock(&philo->start_mutex);
-	while (1)
-	{
+		if (!philo_started(philos))
+			continue ;
 		if (ended_all(philos))
 			break ;
-		if (ended_philo(philo))
+		if (ended_philo(p(philos)))
 			continue ;
 		if (is_dead(philos))
 			break ;
