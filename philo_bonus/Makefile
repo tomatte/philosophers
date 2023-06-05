@@ -30,7 +30,7 @@ OBJS_DIR	=	./objects
 
 OBJS		=	$(patsubst %.c,$(OBJS_DIR)/%.o, $(SRC))
 
-CFLAGS		=	-Wall -Wextra -pthread -g3 ##-Werror removeeeeeeeeeeeeeeeeed!!!!!!!!!!!!!
+CFLAGS		=	-Wall -Wextra -Werror -pthread -g3
 
 NAME		=	philo_bonus
 
