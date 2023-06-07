@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 13:51:26 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/06/05 15:09:42 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/06/07 11:39:33 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,12 @@ static int	ended_all(t_clst *lst)
 	ended = 0;
 	while (lst->index != 0)
 		lst = lst->prev;
-	if (p(lst)->ended)
+	if (ended_philo(p(lst)))
 		ended++;
 	lst = lst->next;
 	while (lst->index != 0)
 	{
-		if (p(lst)->ended)
+		if (ended_philo(p(lst)))
 			ended++;
 		lst = lst->next;
 	}
