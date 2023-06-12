@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 12:10:16 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/06/05 11:29:24 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/06/12 15:09:52 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,16 @@ static void	put_forks_back(t_clst *node)
 	fork2 = get_node(philo->forks, node->next->index)->content;
 	fork1->owner = 0;
 	fork2->owner = 0;
-	pthread_mutex_unlock(&fork1->mutex);
-	pthread_mutex_unlock(&fork2->mutex);
+	if (node->next->index == 0 && node->index % 2 != 0)
+	{
+		pthread_mutex_unlock(&fork2->mutex);
+		pthread_mutex_unlock(&fork1->mutex);
+	}
+	else
+	{
+		pthread_mutex_unlock(&fork1->mutex);
+		pthread_mutex_unlock(&fork2->mutex);
+	}
 }
 
 static void	take_forks(t_clst *node)
